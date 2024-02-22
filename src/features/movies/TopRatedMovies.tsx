@@ -5,7 +5,6 @@ import { useTopRatedMovies } from "./useTopRatedMovies";
 
 function TopRatedMovies() {
   const { topRatedMovies, isLoading } = useTopRatedMovies();
-  console.log(topRatedMovies);
 
   if (isLoading) return <Spinner />;
   return (

@@ -10,18 +10,14 @@ function Movies() {
           <Button
             to={"/movies/now-playing"}
             style={"iconic"}
-            btnName={"Now Playing"}
+            btnName="Now Playing"
           />
-          <Button to={"/movies/popular"} style={"iconic"} btnName={"Popular"} />
-          <Button
-            to={"/movies/upcoming"}
-            style={"iconic"}
-            btnName={"Upcoming"}
-          />
+          <Button to={"/movies/popular"} style={"iconic"} btnName="Popular" />
+          <Button to={"/movies/upcoming"} style={"iconic"} btnName="Upcoming" />
           <Button
             to={"/movies/top-rated"}
             style={"iconic"}
-            btnName={"Top Rated"}
+            btnName="Top Rated"
           />
         </div>
         <div>

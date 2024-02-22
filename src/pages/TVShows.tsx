@@ -10,18 +10,14 @@ function TVShows() {
           <Button
             to={"/tv-shows/airing-today"}
             style={"iconic"}
-            btnName={"Airing Today"}
+            btnName="Airing Today"
           />
-          <Button
-            to={"/tv-shows/popular"}
-            style={"iconic"}
-            btnName={"Popular"}
-          />
-          <Button to={"/tv-shows/on-tv"} style={"iconic"} btnName={"On TV"} />
+          <Button to={"/tv-shows/popular"} style={"iconic"} btnName="Popular" />
+          <Button to={"/tv-shows/on-tv"} style={"iconic"} btnName="On TV" />
           <Button
             to={"/tv-shows/top-rated"}
             style={"iconic"}
-            btnName={"Top Rated"}
+            btnName="Top Rated"
           />
         </div>
         <div>

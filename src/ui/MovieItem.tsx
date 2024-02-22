@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
 
-function MovieItem({ movie }) {
-  //console.log(movie);
+export interface MovieProp {
+  movie: {
+    id: number;
+    poster_path: string;
+    title?: string;
+    name?: string;
+    original_name?: string;
+    release_date?: string;
+    first_air_date?: string;
+  };
+}
+
+function MovieItem({ movie }: MovieProp) {
   return (
     <Link
       to={`/movie/${movie.id}`}

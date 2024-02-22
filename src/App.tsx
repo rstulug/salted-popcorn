@@ -13,6 +13,7 @@ import AiringTodayTVShows from "./features/tv-shows/AiringTodayTVShows";
 import PopularTVShows from "./features/tv-shows/PopularTVShows";
 import OnTVShows from "./features/tv-shows/OnTVShows";
 import TopRatedTVShows from "./features/tv-shows/TopRatedTVShows";
+import People from "./pages/People";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,6 @@ const router = createBrowserRouter([
       {
         path: "tv-shows",
         element: <TVShows />,
-        errorElement: <PageNotFound />,
         children: [
           {
             path: "airing-today",
@@ -67,11 +67,11 @@ const router = createBrowserRouter([
       },
       {
         path: "people",
-        //element: <People />,
+        element: <People />,
       },
       {
         path: "movie/:movieId",
-        //element: <Movies />,
+        element: <Movies />,
       },
       {
         path: "tv-shows/:tvshowId",
