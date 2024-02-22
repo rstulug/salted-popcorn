@@ -1,35 +1,120 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import AppLayout from "./ui/AppLayout";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
+import PageNotFound from "./ui/PageNotFound";
+import Movies from "./pages/Movies";
+import NowPlayingMovies from "./features/movies/NowPlayingMovies";
+import PopularMovies from "./features/movies/PopularMovies";
+import UpcomingMovies from "./features/movies/UpcomingMovies";
+import TopRatedMovies from "./features/movies/TopRatedMovies";
+import TVShows from "./pages/TVShows";
+import AiringTodayTVShows from "./features/tv-shows/AiringTodayTVShows";
+import PopularTVShows from "./features/tv-shows/PopularTVShows";
+import OnTVShows from "./features/tv-shows/OnTVShows";
+import TopRatedTVShows from "./features/tv-shows/TopRatedTVShows";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <PageNotFound />,
+    children: [
+      {
+        path: "movies",
+        element: <Movies />,
+        children: [
+          {
+            path: "now-playing",
+            element: <NowPlayingMovies />,
+          },
+          {
+            path: "popular",
+            element: <PopularMovies />,
+          },
+          {
+            path: "upcoming",
+            element: <UpcomingMovies />,
+          },
+          {
+            path: "top-rated",
+            element: <TopRatedMovies />,
+          },
+        ],
+      },
+      {
+        path: "tv-shows",
+        element: <TVShows />,
+        errorElement: <PageNotFound />,
+        children: [
+          {
+            path: "airing-today",
+            element: <AiringTodayTVShows />,
+          },
+          {
+            path: "popular",
+            element: <PopularTVShows />,
+          },
+          {
+            path: "on-tv",
+            element: <OnTVShows />,
+          },
+          {
+            path: "top-rated",
+            element: <TopRatedTVShows />,
+          },
+        ],
+      },
+      {
+        path: "people",
+        //element: <People />,
+      },
+      {
+        path: "movie/:movieId",
+        //element: <Movies />,
+      },
+      {
+        path: "tv-shows/:tvshowId",
+      },
+    ],
+  },
+]);
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 30,
+    },
+  },
+});
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <Toaster
+        position="top-center"
+        gutter={12}
+        containerStyle={{ margin: "8px" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            backgroundColor: "white",
+            color: "black",
+            zIndex: "10000",
+          },
+        }}
+      />
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;
