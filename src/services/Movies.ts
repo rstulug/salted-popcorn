@@ -19,9 +19,9 @@ export async function getNowPlayingMovies(curPage: number) {
   return data;
 }
 
-export async function getPopularMovies() {
+export async function getPopularMovies(curPage: number) {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+    `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${curPage}`,
     options
   );
   if (!res.ok)
@@ -31,9 +31,9 @@ export async function getPopularMovies() {
   return data;
 }
 
-export async function getUpcomingMovies() {
+export async function getUpcomingMovies(curPage: number) {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+    `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${curPage}`,
     options
   );
   if (!res.ok)
@@ -43,9 +43,9 @@ export async function getUpcomingMovies() {
   return data;
 }
 
-export async function getTopRatedMovies() {
+export async function getTopRatedMovies(curPage: number) {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+    `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${curPage}`,
     options
   );
   if (!res.ok)

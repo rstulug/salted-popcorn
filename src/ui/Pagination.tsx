@@ -34,6 +34,11 @@ export default function Pagination({ pages, curPage }: PagesProps) {
     setSearchParams(searchParams);
   }
 
+  function handleClick(index: number) {
+    searchParams.set("page", `${index}`);
+    setSearchParams(searchParams);
+  }
+
   return (
     <div className="flex justify-center items-center flex-row text-xl  gap-4 py-2 text-white my-6  rounded-lg mx-auto px-3">
       {curPage > 1 && (
@@ -54,11 +59,21 @@ export default function Pagination({ pages, curPage }: PagesProps) {
           <FaArrowLeftLong />
         </button>
       )}
-      <button>
-        {Array.from({ length: 9 }, (_, i) => curPage - 4 + i).filter(
-          (i) => i > 0 && i <= pages
-        )}
-      </button>
+      <div className="flex flex-row gap-2">
+        {Array.from({ length: 9 }, (_, i) => curPage - 4 + i)
+          .filter((i) => i > 0 && i <= pages)
+          .map((index) => (
+            <button
+              className={
+                "rounded-full  w-10 h-10" +
+                `${index === curPage ? " bg-red-800" : " bg-sky-500"}`
+              }
+              onClick={() => handleClick(index)}
+            >
+              {index}
+            </button>
+          ))}
+      </div>
       {curPage < pages && (
         <button
           onClick={handleNextPage}

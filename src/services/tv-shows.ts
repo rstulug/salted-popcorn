@@ -7,9 +7,9 @@ const options = {
   },
 };
 
-export async function getAiringTodayTVShows() {
+export async function getAiringTodayTVShows(curPage: number) {
   const res = await fetch(
-    "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1",
+    `https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=${curPage}`,
     options
   );
 
@@ -20,9 +20,9 @@ export async function getAiringTodayTVShows() {
   return data;
 }
 
-export async function getonTVShows() {
+export async function getonTVShows(curPage: number) {
   const res = await fetch(
-    "https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1",
+    `https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=${curPage}`,
     options
   );
 
@@ -32,9 +32,9 @@ export async function getonTVShows() {
   return data;
 }
 
-export async function getPopularTVShows() {
+export async function getPopularTVShows(curPage: number) {
   const res = await fetch(
-    "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1",
+    `https://api.themoviedb.org/3/tv/popular?language=en-US&page=${curPage}`,
     options
   );
 
@@ -45,9 +45,9 @@ export async function getPopularTVShows() {
   return data;
 }
 
-export async function getTopRatedTVShows() {
+export async function getTopRatedTVShows(curPage: number) {
   const res = await fetch(
-    "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1",
+    `https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=${curPage}`,
     options
   );
 

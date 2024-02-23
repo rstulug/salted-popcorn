@@ -13,7 +13,6 @@ function NowPlayingMovies() {
     ? 1
     : Number(searchParams.get("page"));
 
-  console.log(nowPlayingMovies);
   if (isLoading) return <Spinner />;
   return (
     <div className="flex flex-col ">

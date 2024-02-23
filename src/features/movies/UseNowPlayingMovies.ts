@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getNowPlayingMovies } from "../../services/movies";
 import { useSearchParams } from "react-router-dom";
+import { getNowPlayingMovies } from "../../services/movies";
 
 export function useNowPlayingMovies() {
   const [searchParams] = useSearchParams();

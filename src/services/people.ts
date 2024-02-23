@@ -7,9 +7,9 @@ const options = {
   },
 };
 
-export async function getPeople() {
+export async function getPeople(curPage: number) {
   const res = await fetch(
-    "https://api.themoviedb.org/3/person/popular?language=en-US&page=1",
+    `https://api.themoviedb.org/3/person/popular?language=en-US&page=${curPage}`,
     options
   );
   if (!res.ok)

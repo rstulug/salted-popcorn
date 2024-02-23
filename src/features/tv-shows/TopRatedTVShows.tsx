@@ -1,17 +1,27 @@
+import { useSearchParams } from "react-router-dom";
 import GridContainer from "../../ui/GridContainer";
 import MovieItem, { MovieProp } from "../../ui/MovieItem";
 import Spinner from "../../ui/Spinner";
 import { useTopRatedTVShows } from "./useTopRatedTVShows";
+import Pagination from "../../ui/Pagination";
 
 function TopRatedTVShows() {
   const { topRatedTVShows, isLoading } = useTopRatedTVShows();
+  const [searchParams] = useSearchParams();
+
+  const curPage = !searchParams.get("page")
+    ? 1
+    : Number(searchParams.get("page"));
   if (isLoading) return <Spinner />;
   return (
-    <GridContainer>
-      {topRatedTVShows.results.map((movie: MovieProp["movie"]) => (
-        <MovieItem movie={movie} key={movie.id} />
-      ))}
-    </GridContainer>
+    <div className="flex flex-col">
+      <GridContainer>
+        {topRatedTVShows.results.map((movie: MovieProp["movie"]) => (
+          <MovieItem movie={movie} key={movie.id} />
+        ))}
+      </GridContainer>
+      <Pagination pages={topRatedTVShows.total_pages} curPage={curPage} />
+    </div>
   );
 }
 
