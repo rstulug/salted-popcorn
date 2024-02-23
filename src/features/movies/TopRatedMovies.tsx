@@ -1,5 +1,5 @@
 import GridContainer from "../../ui/GridContainer";
-import MovieItem from "../../ui/MovieItem";
+import MovieItem, { MovieProp } from "../../ui/MovieItem";
 import Spinner from "../../ui/Spinner";
 import { useTopRatedMovies } from "./useTopRatedMovies";
 
@@ -9,7 +9,7 @@ function TopRatedMovies() {
   if (isLoading) return <Spinner />;
   return (
     <GridContainer>
-      {topRatedMovies.results.map((movie) => (
+      {topRatedMovies.results.map((movie: MovieProp["movie"]) => (
         <MovieItem movie={movie} key={movie.id} />
       ))}
     </GridContainer>

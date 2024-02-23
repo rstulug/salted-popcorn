@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPopularMovies } from "../../services/Movies";
+import { getPopularMovies } from "../../services/movies";
 
 export function usePopularMovies() {
   const { data: popularMovies, isLoading } = useQuery({

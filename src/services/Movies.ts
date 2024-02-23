@@ -7,9 +7,9 @@ const options = {
   },
 };
 
-export async function getNowPlayingMovies() {
+export async function getNowPlayingMovies(curPage: number) {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+    `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${curPage}`,
     options
   );
   if (!res.ok)

@@ -1,5 +1,5 @@
 import GridContainer from "../../ui/GridContainer";
-import MovieItem from "../../ui/MovieItem";
+import MovieItem, { MovieProp } from "../../ui/MovieItem";
 import Spinner from "../../ui/Spinner";
 import { useAiringTodayTVShows } from "./useAiringTodayTVShows";
 
@@ -9,7 +9,7 @@ function AiringTodayTVShows() {
 
   return (
     <GridContainer>
-      {airingTodayTVShows.results.map((movie) => (
+      {airingTodayTVShows.results.map((movie: MovieProp["movie"]) => (
         <MovieItem movie={movie} key={movie.id} />
       ))}
     </GridContainer>
