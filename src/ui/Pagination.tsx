@@ -54,7 +54,11 @@ export default function Pagination({ pages, curPage }: PagesProps) {
           <FaArrowLeftLong />
         </button>
       )}
-      <button>Ara Elemenalar</button>
+      <button>
+        {Array.from({ length: 9 }, (_, i) => curPage - 4 + i).filter(
+          (i) => i > 0 && i <= pages
+        )}
+      </button>
       {curPage < pages && (
         <button
           onClick={handleNextPage}
