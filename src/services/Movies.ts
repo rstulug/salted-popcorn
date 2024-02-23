@@ -54,3 +54,15 @@ export async function getTopRatedMovies(curPage: number) {
   const data = await res.json();
   return data;
 }
+
+export async function getMovieById(movieId: string | undefined) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
+    options
+  );
+  if (!res.ok)
+    throw new Error("An error occured during fetching movie details");
+
+  const data = await res.json();
+  return data;
+}

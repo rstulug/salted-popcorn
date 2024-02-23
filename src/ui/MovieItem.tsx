@@ -16,9 +16,9 @@ function MovieItem({ movie }: MovieProp) {
   return (
     <Link
       to={`/movie/${movie.id}`}
-      className=" border-sky-400 rounded-md border-2  hover:scale-105 pb-2 w-full flex justify-center items-start"
+      className=" border-sky-400 rounded-md border-2  hover:scale-105 pb-2 flex justify-center items-start w-44"
     >
-      <div className="flex justify-center flex-col w-48 items-start">
+      <div className="flex justify-center flex-col w-full items-start">
         <img
           src={`http://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}

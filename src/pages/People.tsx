@@ -16,8 +16,8 @@ function People() {
 
   return (
     <div className="flex justify-center flex-row gap-4 w-full">
-      <div className="w-[20%]">Sidebar</div>
-      <div className="w-[80%] flex flex-col">
+      <div className="w-[25%]">Sidebar</div>
+      <div className="w-[75%] flex flex-col">
         <GridContainer>
           {people.results.map((actor: ActorProps["actor"]) => (
             <PeopleItem actor={actor} key={actor.id} />

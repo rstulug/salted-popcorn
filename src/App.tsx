@@ -14,6 +14,7 @@ import PopularTVShows from "./features/tv-shows/PopularTVShows";
 import OnTVShows from "./features/tv-shows/OnTVShows";
 import TopRatedTVShows from "./features/tv-shows/TopRatedTVShows";
 import People from "./pages/People";
+import MovieDetail from "./features/movies/MovieDetail";
 
 const router = createBrowserRouter([
   {
@@ -75,7 +76,7 @@ const router = createBrowserRouter([
       },
       {
         path: "movie/:movieId",
-        element: <Movies />,
+        element: <MovieDetail />,
       },
       {
         path: "tv-shows/:tvshowId",

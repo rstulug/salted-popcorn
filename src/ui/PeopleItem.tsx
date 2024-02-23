@@ -10,7 +10,6 @@ export interface ActorProps {
 }
 
 export default function PeopleItem({ actor }: ActorProps) {
-  console.log(actor);
   return (
     <Link
       to={`/people/${actor.id}`}
