@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { IMAGE_URL } from "../utils/constant";
 
 export interface MovieProp {
   movie: {
@@ -20,7 +21,7 @@ function MovieItem({ movie }: MovieProp) {
     >
       <div className="flex justify-center flex-col w-full items-start">
         <img
-          src={`http://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={`${IMAGE_URL}${movie.poster_path}`}
           alt={movie.title}
           className="w-full"
         />

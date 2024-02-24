@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { IMAGE_URL } from "../utils/constant";
 
 export interface ActorProps {
   actor: {
@@ -17,7 +18,7 @@ export default function PeopleItem({ actor }: ActorProps) {
     >
       <div className="flex justify-center flex-col w-48 items-start">
         <img
-          src={`http://image.tmdb.org/t/p/w500${actor.profile_path}`}
+          src={`${IMAGE_URL}${actor.profile_path}`}
           alt={actor.name || actor.original_name}
           className="w-full"
         />

@@ -69,6 +69,7 @@ export default function Pagination({ pages, curPage }: PagesProps) {
                 `${index === curPage ? " bg-red-800" : " bg-sky-500"}`
               }
               onClick={() => handleClick(index)}
+              key={index}
             >
               {index}
             </button>
