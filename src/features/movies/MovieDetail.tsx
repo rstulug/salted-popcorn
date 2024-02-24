@@ -8,12 +8,17 @@ export default function MovieDetail() {
   console.log(movieDetail);
   if (isLoading) return <Spinner />;
   return (
-    <div className="flex ">
-      <div className="w-[30%] m-0">
+    <div
+      className="flex "
+      style={{
+        backgroundImage: `linear-gradient(rgba(178, 204, 209, 0.623), rgba(113, 113, 136, 0.849))`,
+      }}
+    >
+      <div className="w-[30%] h-[30rem] flex items-center">
         <img
           src={IMAGE_URL + movieDetail.poster_path}
           alt={`${movieDetail.title}`}
-          className="w-full h-[30rem] object-cover"
+          className="w-full h-[25rem] object-contain"
         />
       </div>
       <div
