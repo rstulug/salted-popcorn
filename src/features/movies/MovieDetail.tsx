@@ -7,27 +7,6 @@ export default function MovieDetail() {
   console.log(movieDetail);
   if (isLoading) return <Spinner />;
   return (
-<<<<<<< HEAD
-    <div className="flex h-[30rem] ml-8 mt-8 gap-5 text-sky-100">
-      <div className="">
-        <img
-          src={IMAGE_URL + movieDetail.poster_path}
-          alt={`${movieDetail.title}`}
-          className="w-full h-[25rem] object-contain rounded-2xl"
-        />
-      </div>
-      <div>
-        <div className="font-bold text-2xl italic text-center">
-          {movieDetail.original_title
-            ? movieDetail.original_title
-            : movieDetail.title}
-        </div>
-        <div className="flex gap-3 ">
-          Genre:{" "}
-          {movieDetail.genres.map((genre: { id: number; name: string }) => (
-            <span>{genre.name}</span>
-          ))}
-=======
     <div className="flex justify-between">
       <div></div>
       <div
@@ -38,7 +17,6 @@ export default function MovieDetail() {
       >
         <div className="text-zinc-200 flex justify-center items-end h-full py-2 px-2 font-semibold">
           {movieDetail.overview}
->>>>>>> parent of defaf5c (Small changes in moviedetail)
         </div>
       </div>
     </div>
