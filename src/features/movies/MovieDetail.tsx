@@ -1,4 +1,6 @@
 import Button from "../../ui/Button";
+import CastItem, { CastProp } from "../../ui/CastItem";
+import RowContainer from "../../ui/RowContainer";
 import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
 import { useMovie } from "./useMovie";
@@ -6,6 +8,7 @@ import { FaCirclePlay } from "react-icons/fa6";
 
 export default function MovieDetail() {
   const { movieDetail, isLoading } = useMovie();
+  console.log(movieDetail);
 
   if (isLoading) return <Spinner />;
 
@@ -17,7 +20,7 @@ export default function MovieDetail() {
       >
         <div className=" max-w-screen-xl mx-auto">
           <div className="flex flex-row gap-2">
-            <div className="w-auto">
+            <div className="w-auto hidden md:flex">
               <img
                 src={`${IMAGE_URL}${movieDetail.poster_path}`}
                 alt={movieDetail.title}
@@ -28,17 +31,19 @@ export default function MovieDetail() {
               style={{
                 backgroundImage: `linear-gradient(rgba(178, 204, 209, 0.623), rgba(113, 113, 136, 0.849)),url(${IMAGE_URL}${movieDetail.backdrop_path})`,
               }}
-              className="w-full h-[25rem]  rounded-2xl bg-no-repeat bg-cover"
+              className="w-full h-[25rem]  rounded-2xl bg-no-repeat bg-cover  text-center"
             >
               <div className="flex flex-col text-stone-900 ml-7 mt-5  w-[30%] gap-4 md:text-lg text-sm">
-                <div className="font-bold text-xl py-2 text-center">
+                <div className="font-bold text-xl py-2">
                   {movieDetail.title || movieDetail.origional_title}
                 </div>
                 {movieDetail.tagline && (
-                  <div>Tagline: {movieDetail.tagline}</div>
+                  <div className="font-semibold italic">
+                    {" "}
+                    {movieDetail.tagline}
+                  </div>
                 )}
-                <div className="flex  gap-2 ">
-                  Genre:
+                <div className="flex  gap-2 justify-center">
                   {movieDetail.genres.map(
                     (genre: { id: number; name: string }) => (
                       <span key={genre.id}>{genre.name}</span>
@@ -46,30 +51,28 @@ export default function MovieDetail() {
                   )}
                 </div>
                 {movieDetail.runtime && (
-                  <div>Runtime: {movieDetail.runtime} minutes</div>
+                  <div>{movieDetail.runtime} minutes</div>
                 )}
 
-                <div className="flex flex-col justify-center">
-                  Production Companies:
-                  <div className="flex flex-row py-2 gap-1">
-                    {movieDetail.production_companies.map(
-                      (company: {
-                        id: number;
-                        logo_path: string;
-                        name: string;
-                        origin_country: string;
-                      }) =>
-                        company.logo_path && (
-                          <img
-                            src={`${IMAGE_URL}${company.logo_path}`}
-                            className="h-[1rem]  rounded-full w-auto object-contain"
-                            key={company.id}
-                            alt={`${company.name}`}
-                          />
-                        )
-                    )}
-                  </div>
+                <div className="flex flex-wrap  gap-1 justify-center">
+                  {movieDetail.production_companies.map(
+                    (company: {
+                      id: number;
+                      logo_path: string;
+                      name: string;
+                      origin_country: string;
+                    }) =>
+                      company.logo_path && (
+                        <img
+                          src={`${IMAGE_URL}${company.logo_path}`}
+                          className="h-[1rem]  rounded-full w-auto object-contain"
+                          key={company.id}
+                          alt={`${company.name}`}
+                        />
+                      )
+                  )}
                 </div>
+
                 {movieDetail.homepage && (
                   <Button
                     btnName="Go to Homepage"
@@ -77,6 +80,7 @@ export default function MovieDetail() {
                     size="regular"
                     icon={<FaCirclePlay />}
                     to={movieDetail.homepage}
+                    targetOutside={true}
                   />
                 )}
               </div>
@@ -84,8 +88,16 @@ export default function MovieDetail() {
           </div>
         </div>
       </div>
-      <div className="mt-[30rem] text-center font-semibold text-sky-100">
+      <div className="mt-[30rem] text-center font-semibold text-sky-100 text-xl">
         {movieDetail.overview}
+      </div>
+      <div className="flex mt-4 flex-col">
+        <span className="text-2xl font-bold mb-2 underline">Cast</span>
+        <RowContainer>
+          {movieDetail.credits.cast.map((cast: CastProp["cast"]) => (
+            <CastItem cast={cast} key={cast.id} />
+          ))}
+        </RowContainer>
       </div>
     </div>
   );

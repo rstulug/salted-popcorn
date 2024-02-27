@@ -46,7 +46,7 @@ export default function TVShowDetail() {
                   )}
                 </div>
                 {tvShowDetail.episode_run_time.length > 0 && (
-                  <div>Runtime: {tvShowDetail.episode_run_time} minutes</div>
+                  <div>Runtime: {tvShowDetail.episode_run_time[0]} minutes</div>
                 )}
                 {tvShowDetail.number_of_episodes && (
                   <div>

@@ -39,6 +39,7 @@ interface ButtonProps {
   title?: string;
   style: keyof typeof styles;
   to?: string;
+  targetOutside?: boolean;
 }
 
 function Button({
@@ -51,6 +52,7 @@ function Button({
   disabled,
   title,
   style,
+  targetOutside,
 }: ButtonProps) {
   if (to)
     return (
@@ -59,6 +61,7 @@ function Button({
         className={({ isActive }) =>
           isActive ? styles["iconic"] + "bg-sky-400" : styles["iconic"]
         }
+        target={targetOutside ? "_blank" : "_self"}
       >
         {icon}
         {btnName}

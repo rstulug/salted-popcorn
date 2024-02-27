@@ -12,6 +12,7 @@ export interface TVShowProp {
 }
 
 function TVShowItem({ tvshow }: TVShowProp) {
+  console.log(tvshow);
   return (
     <Link
       to={`/tv-shows/${tvshow.id}`}

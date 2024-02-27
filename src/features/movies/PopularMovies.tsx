@@ -7,7 +7,7 @@ import Pagination from "../../ui/Pagination";
 
 function PopularMovies() {
   const { popularMovies, isLoading } = usePopularMovies();
-  console.log(popularMovies);
+
   const [searchParams] = useSearchParams();
 
   const curPage = !searchParams.get("page")
