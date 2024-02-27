@@ -57,3 +57,16 @@ export async function getTopRatedTVShows(curPage: number) {
   const data = await res.json();
   return data;
 }
+
+export async function getTVShowDetail(id: string | undefined) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/tv/${id}?language=en-US`,
+    options
+  );
+
+  if (!res.ok)
+    throw new Error(`An error occured during fetching tv show detail`);
+  const data = await res.json();
+
+  return data;
+}

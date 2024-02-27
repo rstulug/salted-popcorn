@@ -1,9 +1,10 @@
 import { useSearchParams } from "react-router-dom";
 import GridContainer from "../../ui/GridContainer";
-import MovieItem, { MovieProp } from "../../ui/MovieItem";
+
 import Spinner from "../../ui/Spinner";
 import { useAiringTodayTVShows } from "./useAiringTodayTVShows";
 import Pagination from "../../ui/Pagination";
+import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
 
 function AiringTodayTVShows() {
   const { airingTodayTVShows, isLoading } = useAiringTodayTVShows();
@@ -17,8 +18,8 @@ function AiringTodayTVShows() {
   return (
     <div className="flex flex-col">
       <GridContainer>
-        {airingTodayTVShows.results.map((movie: MovieProp["movie"]) => (
-          <MovieItem movie={movie} key={movie.id} />
+        {airingTodayTVShows.results.map((tvShow: TVShowProp["tvshow"]) => (
+          <TVShowItem tvshow={tvShow} key={tvShow.id} />
         ))}
       </GridContainer>
       <Pagination pages={airingTodayTVShows.total_pages} curPage={curPage} />

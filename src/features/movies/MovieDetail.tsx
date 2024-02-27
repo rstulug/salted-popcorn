@@ -1,11 +1,14 @@
+import Button from "../../ui/Button";
 import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
 import { useMovie } from "./useMovie";
+import { FaCirclePlay } from "react-icons/fa6";
 
 export default function MovieDetail() {
   const { movieDetail, isLoading } = useMovie();
-  console.log(movieDetail);
+
   if (isLoading) return <Spinner />;
+
   return (
     <div className="flex flex-col gap-5">
       <div
@@ -42,6 +45,9 @@ export default function MovieDetail() {
                     )
                   )}
                 </div>
+                {movieDetail.runtime && (
+                  <div>Runtime: {movieDetail.runtime} minutes</div>
+                )}
 
                 <div className="flex flex-col justify-center">
                   Production Companies:
@@ -52,17 +58,27 @@ export default function MovieDetail() {
                         logo_path: string;
                         name: string;
                         origin_country: string;
-                      }) => (
-                        <img
-                          src={`${IMAGE_URL}${company.logo_path}`}
-                          className="h-[1rem]  rounded-full w-auto object-contain"
-                          key={company.id}
-                          alt={`${company.name}`}
-                        />
-                      )
+                      }) =>
+                        company.logo_path && (
+                          <img
+                            src={`${IMAGE_URL}${company.logo_path}`}
+                            className="h-[1rem]  rounded-full w-auto object-contain"
+                            key={company.id}
+                            alt={`${company.name}`}
+                          />
+                        )
                     )}
                   </div>
                 </div>
+                {movieDetail.homepage && (
+                  <Button
+                    btnName="Go to Homepage"
+                    style="iconic"
+                    size="regular"
+                    icon={<FaCirclePlay />}
+                    to={movieDetail.homepage}
+                  />
+                )}
               </div>
             </div>
           </div>
