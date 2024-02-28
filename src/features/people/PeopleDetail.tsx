@@ -6,13 +6,11 @@ import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
 
 export default function PeopleDetail() {
   const { peopleDetail, isLoading } = usePeopleDetail();
-  const [showMore, setShowMore] = useState<boolean>(
-    peopleDetail?.biography?.length > 400
-  );
+  const [showMore, setShowMore] = useState<boolean>(false);
 
   const peopleBiography = showMore
-    ? peopleDetail?.biography.slice(0, 400)
-    : peopleDetail?.biography;
+    ? peopleDetail?.biography
+    : peopleDetail?.biography.slice(0, 400);
 
   if (isLoading) return <Spinner />;
   console.log(peopleDetail);
@@ -41,15 +39,15 @@ export default function PeopleDetail() {
             <div>{peopleDetail.place_of_birth}</div>
             <div>
               {peopleBiography}
-              {
+              {peopleDetail.biography.length >= peopleBiography.length && (
                 <button
                   onClick={() => setShowMore(() => !showMore)}
                   className="font-bold ml-2  border-sky-500 px-1 rounded-xl align-middle"
-                  title={showMore ? "Read More" : "Read Less"}
+                  title={showMore ? "Read Less" : "Read More"}
                 >
-                  {showMore ? <FaAnglesRight /> : <FaAnglesLeft />}
+                  {showMore ? <FaAnglesLeft /> : <FaAnglesRight />}
                 </button>
-              }
+              )}
             </div>
           </div>
         </div>
