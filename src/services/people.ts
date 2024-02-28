@@ -22,7 +22,7 @@ export async function getPeople(curPage: number) {
 
 export async function getPeopleDetail(id: string | undefined) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/person/${id}?language=en-US&append_to_response=movie_credits,tv_credits,tagged_images`,
+    `https://api.themoviedb.org/3/person/${id}?language=en-US&append_to_response=movie_credits,tv_credits`,
     options
   );
 
