@@ -7,17 +7,20 @@ interface Props {
 export default function RowContainer({ children }: Props) {
   return (
     <div
-      style={{
-        display: "grid",
-        gridAutoFlow: "column",
-        overflowX: "scroll",
-        overflowY: "hidden",
+      // style={{
+      //   display: "grid",
+      //   gridAutoFlow: "column",
+      //   overflowX: "scroll",
+      //   overflowY: "hidden",
 
-        alignContent: "center",
-        gap: "1rem",
-      }}
+      //   alignContent: "center",
+      //   gap: "1rem",
+      // }}
+      className="overflow-hidden relative w-full"
     >
-      {children}
+      <div className="flex transition ease-out duration-700 gap-4">
+        {children}
+      </div>
     </div>
   );
 }

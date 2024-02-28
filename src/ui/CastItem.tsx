@@ -16,12 +16,12 @@ export default function CastItem({ cast }: CastProp) {
   return (
     <Link
       to={`/people/${cast.id}`}
-      className="rounded-md border-2 border-sky-400  h-auto pb-2 w-44 "
+      className="rounded-md border-2 border-sky-400  h-auto pb-2  w-[200px]"
     >
       <img
         src={IMAGE_URL + cast.profile_path}
         alt={cast.name}
-        className="w-full h-[15rem] object-cover"
+        className="w-full h-auto object-cover"
       />
       <div>{cast.name} </div>
       <div>Role: {cast.character}</div>

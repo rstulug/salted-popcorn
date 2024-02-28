@@ -94,9 +94,11 @@ export default function MovieDetail() {
       <div className="flex mt-4 flex-col">
         <span className="text-2xl font-bold mb-2 underline">Cast</span>
         <RowContainer>
-          {movieDetail.credits.cast.map((cast: CastProp["cast"]) => (
-            <CastItem cast={cast} key={cast.id} />
-          ))}
+          <div className="flex gap-4">
+            {movieDetail.credits.cast.map((cast: CastProp["cast"]) => (
+              <CastItem cast={cast} key={cast.id} />
+            ))}
+          </div>
         </RowContainer>
       </div>
     </div>
