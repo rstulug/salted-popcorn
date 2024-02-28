@@ -19,7 +19,11 @@ export default function CastItem({ cast }: CastProp) {
       className="rounded-md border-2 border-sky-400  h-auto pb-2  w-[200px]"
     >
       <img
-        src={IMAGE_URL + cast.profile_path}
+        src={
+          cast.profile_path
+            ? IMAGE_URL + cast.profile_path
+            : "/default_user.jpg"
+        }
         alt={cast.name}
         className="w-full h-auto object-cover"
       />

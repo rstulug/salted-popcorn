@@ -3,12 +3,15 @@ import Button from "../../ui/Button";
 import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
 import { useTVShow } from "./useTVShow";
+import RowContainer from "../../ui/RowContainer";
+import CastItem, { CastProp } from "../../ui/CastItem";
+import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
 
 export default function TVShowDetail() {
   const { tvShowDetail, isLoading } = useTVShow();
 
   if (isLoading) return <Spinner />;
-  console.log(tvShowDetail);
+
   return (
     <div className="flex flex-col gap-5">
       <div
@@ -19,7 +22,11 @@ export default function TVShowDetail() {
           <div className="flex flex-row gap-2">
             <div className="w-auto">
               <img
-                src={`${IMAGE_URL}${tvShowDetail.poster_path}`}
+                src={
+                  tvShowDetail.poster_path
+                    ? `${IMAGE_URL}${tvShowDetail.poster_path}`
+                    : "/default_cinema.jpg"
+                }
                 alt={tvShowDetail.name}
                 className=" h-[25rem] w-auto object-fit rounded-xl"
               />
@@ -74,6 +81,34 @@ export default function TVShowDetail() {
       <div className="mt-[30rem] text-center font-semibold text-sky-100">
         {tvShowDetail.overview}
       </div>
+      {tvShowDetail.credits.cast.length > 0 && (
+        <div className="flex mt-4 flex-col">
+          <span className="text-2xl font-bold mb-2 underline">Cast</span>
+          <RowContainer>
+            <div className="flex gap-4">
+              {tvShowDetail.credits.cast.map((cast: CastProp["cast"]) => (
+                <CastItem cast={cast} key={cast.id} />
+              ))}
+            </div>
+          </RowContainer>
+        </div>
+      )}
+      {tvShowDetail.similar.results.length > 0 && (
+        <div className="flex mt-4 flex-col">
+          <span className="text-2xl font-bold mb-2 underline">
+            Similar Tv Shows
+          </span>
+          <RowContainer>
+            <div className="flex gap-4">
+              {tvShowDetail.similar.results.map(
+                (tvshow: TVShowProp["tvshow"]) => (
+                  <TVShowItem tvshow={tvshow} key={tvshow.id} />
+                )
+              )}
+            </div>
+          </RowContainer>
+        </div>
+      )}
     </div>
   );
 }

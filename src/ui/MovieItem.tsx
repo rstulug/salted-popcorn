@@ -19,7 +19,11 @@ function MovieItem({ movie }: MovieProp) {
     >
       <div className="flex justify-center flex-col w-full items-start">
         <img
-          src={`${IMAGE_URL}${movie.poster_path}`}
+          src={
+            movie.poster_path
+              ? `${IMAGE_URL}${movie.poster_path}`
+              : "/default_image.jpg"
+          }
           alt={movie.title}
           className="w-full"
         />

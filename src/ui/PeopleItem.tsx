@@ -18,7 +18,11 @@ export default function PeopleItem({ actor }: ActorProps) {
     >
       <div className="flex justify-center flex-col w-48 items-start">
         <img
-          src={`${IMAGE_URL}${actor.profile_path}`}
+          src={
+            actor.profile_path
+              ? `${IMAGE_URL}${actor.profile_path}`
+              : "/default_user.jpg"
+          }
           alt={actor.name || actor.original_name}
           className="w-full"
         />

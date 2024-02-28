@@ -1,5 +1,6 @@
 import Button from "../../ui/Button";
 import CastItem, { CastProp } from "../../ui/CastItem";
+import MovieItem, { MovieProp } from "../../ui/MovieItem";
 import RowContainer from "../../ui/RowContainer";
 import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
@@ -8,7 +9,6 @@ import { FaCirclePlay } from "react-icons/fa6";
 
 export default function MovieDetail() {
   const { movieDetail, isLoading } = useMovie();
-  console.log(movieDetail);
 
   if (isLoading) return <Spinner />;
 
@@ -22,7 +22,11 @@ export default function MovieDetail() {
           <div className="flex flex-row gap-2">
             <div className="w-auto hidden md:flex">
               <img
-                src={`${IMAGE_URL}${movieDetail.poster_path}`}
+                src={
+                  movieDetail.poster_path
+                    ? `${IMAGE_URL}${movieDetail.poster_path}`
+                    : "/default_cinema.jpg"
+                }
                 alt={movieDetail.title}
                 className=" h-[25rem] w-auto object-fit rounded-xl"
               />
@@ -91,16 +95,32 @@ export default function MovieDetail() {
       <div className="mt-[30rem] text-center font-semibold text-sky-100 text-xl">
         {movieDetail.overview}
       </div>
-      <div className="flex mt-4 flex-col">
-        <span className="text-2xl font-bold mb-2 underline">Cast</span>
-        <RowContainer>
-          <div className="flex gap-4">
-            {movieDetail.credits.cast.map((cast: CastProp["cast"]) => (
-              <CastItem cast={cast} key={cast.id} />
-            ))}
-          </div>
-        </RowContainer>
-      </div>
+      {movieDetail.credits.cast.length > 0 && (
+        <div className="flex mt-4 flex-col">
+          <span className="text-2xl font-bold mb-2 underline">Cast</span>
+          <RowContainer>
+            <div className="flex gap-4">
+              {movieDetail.credits.cast.map((cast: CastProp["cast"]) => (
+                <CastItem cast={cast} key={cast.id} />
+              ))}
+            </div>
+          </RowContainer>
+        </div>
+      )}
+      {movieDetail.similar.results.length > 0 && (
+        <div className="flex mt-4 flex-col">
+          <span className="text-2xl font-bold mb-2 underline">
+            Similar Movies
+          </span>
+          <RowContainer>
+            <div className="flex gap-4">
+              {movieDetail.similar.results.map((movie: MovieProp["movie"]) => (
+                <MovieItem movie={movie} key={movie.id} />
+              ))}
+            </div>
+          </RowContainer>
+        </div>
+      )}
     </div>
   );
 }

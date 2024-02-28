@@ -16,11 +16,9 @@ export default function RowContainer({ children }: Props) {
       //   alignContent: "center",
       //   gap: "1rem",
       // }}
-      className="overflow-hidden relative w-full"
+      className=" grid-flow-col overflow-scroll grid overflow-y-hidden overflow-x-auto"
     >
-      <div className="flex transition ease-out duration-700 gap-4">
-        {children}
-      </div>
+      {children}
     </div>
   );
 }

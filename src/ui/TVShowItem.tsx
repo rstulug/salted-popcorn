@@ -12,7 +12,6 @@ export interface TVShowProp {
 }
 
 function TVShowItem({ tvshow }: TVShowProp) {
-  console.log(tvshow);
   return (
     <Link
       to={`/tv-shows/${tvshow.id}`}
@@ -20,7 +19,11 @@ function TVShowItem({ tvshow }: TVShowProp) {
     >
       <div className="flex justify-center flex-col w-full items-start">
         <img
-          src={`${IMAGE_URL}${tvshow.poster_path}`}
+          src={
+            tvshow.poster_path
+              ? `${IMAGE_URL}${tvshow.poster_path}`
+              : "/default_image.jpg"
+          }
           alt={tvshow.name}
           className="w-full"
         />
