@@ -16,7 +16,7 @@ export default function RowContainer({ children }: Props) {
       //   alignContent: "center",
       //   gap: "1rem",
       // }}
-      className=" grid-flow-col overflow-x-scroll grid  w-full"
+      className=" grid-flow-col overflow-x-auto grid  w-full"
     >
       {children}
     </div>
