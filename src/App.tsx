@@ -3,12 +3,10 @@ import AppLayout from "./ui/AppLayout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import PageNotFound from "./ui/PageNotFound";
-import Movies from "./pages/Movies";
 import NowPlayingMovies from "./features/movies/NowPlayingMovies";
 import PopularMovies from "./features/movies/PopularMovies";
 import UpcomingMovies from "./features/movies/UpcomingMovies";
 import TopRatedMovies from "./features/movies/TopRatedMovies";
-import TVShows from "./pages/TVShows";
 import AiringTodayTVShows from "./features/tv-shows/AiringTodayTVShows";
 import PopularTVShows from "./features/tv-shows/PopularTVShows";
 import OnTVShows from "./features/tv-shows/OnTVShows";
@@ -25,48 +23,36 @@ const router = createBrowserRouter([
     errorElement: <PageNotFound />,
     children: [
       {
-        path: "movies",
-        element: <Movies />,
-        children: [
-          {
-            path: "now-playing",
-            element: <NowPlayingMovies />,
-          },
-          {
-            path: "popular",
-            element: <PopularMovies />,
-          },
-          {
-            path: "upcoming",
-            element: <UpcomingMovies />,
-          },
-          {
-            path: "top-rated",
-            element: <TopRatedMovies />,
-          },
-        ],
+        path: "movies/now-playing",
+        element: <NowPlayingMovies />,
       },
       {
-        path: "tv-shows",
-        element: <TVShows />,
-        children: [
-          {
-            path: "airing-today",
-            element: <AiringTodayTVShows />,
-          },
-          {
-            path: "popular",
-            element: <PopularTVShows />,
-          },
-          {
-            path: "on-tv",
-            element: <OnTVShows />,
-          },
-          {
-            path: "top-rated",
-            element: <TopRatedTVShows />,
-          },
-        ],
+        path: "movies/popular",
+        element: <PopularMovies />,
+      },
+      {
+        path: "movies/upcoming",
+        element: <UpcomingMovies />,
+      },
+      {
+        path: "movies/top-rated",
+        element: <TopRatedMovies />,
+      },
+      {
+        path: "tv-shows/airing-today",
+        element: <AiringTodayTVShows />,
+      },
+      {
+        path: "tv-shows/popular",
+        element: <PopularTVShows />,
+      },
+      {
+        path: "tv-shows/on-tv",
+        element: <OnTVShows />,
+      },
+      {
+        path: "tv-shows/top-rated",
+        element: <TopRatedTVShows />,
       },
       {
         path: "people",
