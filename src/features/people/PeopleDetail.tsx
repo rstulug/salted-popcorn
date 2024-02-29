@@ -3,6 +3,9 @@ import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
 import { usePeopleDetail } from "./usePeopleDetail";
 import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
+import RowContainer from "../../ui/RowContainer";
+import MovieItem, { MovieProp } from "../../ui/MovieItem";
+import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
 
 export default function PeopleDetail() {
   const { peopleDetail, isLoading } = usePeopleDetail();
@@ -16,10 +19,6 @@ export default function PeopleDetail() {
   console.log(peopleDetail);
   return (
     <div className="flex flex-col gap-5">
-      <div
-        className="absolute  left-0 bg-gradient-to-l from-current to-[
-        #38EF7D] w-full py-8 h-[26rem]"
-      ></div>
       <div className="max-w-screen-xl mx-auto w-full mt-[2rem] z-10">
         <div className=" flex flex-row justify-start gap-4">
           <div className="w-[20%] h-[22rem]">
@@ -33,7 +32,7 @@ export default function PeopleDetail() {
               className="w-full h-[22rem] object-fit rounded-xl "
             />
           </div>
-          <div className="w-[70%] text-stone-900 flex flex-col gap-5">
+          <div className="w-[70%] text-sky-200 flex flex-col gap-5">
             <div className="font-bold text-3xl ">{peopleDetail.name}</div>
             <div>{peopleDetail.birthday}</div>
             <div>{peopleDetail.place_of_birth}</div>
@@ -52,7 +51,36 @@ export default function PeopleDetail() {
           </div>
         </div>
       </div>
-      <div className="mt-[2rem]">Filmler buraya</div>
+      <div className="mt-[2rem] flex flex-col gap-5">
+        {peopleDetail.movie_credits.cast.length > 0 && (
+          <div>
+            <span className="text-2xl font-bold mb-2 underline">Movies</span>
+            <RowContainer>
+              {peopleDetail.movie_credits.cast.map(
+                (movie: MovieProp["movie"]) => (
+                  <MovieItem movie={movie} key={movie.id} />
+                )
+              )}
+            </RowContainer>
+          </div>
+        )}
+        <div>
+          {peopleDetail.tv_credits.cast.length > 0 && (
+            <div>
+              <span className="text-2xl font-bold mb-2 underline">
+                TV Shows
+              </span>
+              <RowContainer>
+                {peopleDetail.tv_credits.cast.map(
+                  (tvshow: TVShowProp["tvshow"]) => (
+                    <TVShowItem tvshow={tvshow} key={tvshow.id} />
+                  )
+                )}
+              </RowContainer>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
