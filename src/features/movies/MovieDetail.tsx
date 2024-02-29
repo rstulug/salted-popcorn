@@ -1,6 +1,7 @@
 import Button from "../../ui/Button";
 import CastItem, { CastProp } from "../../ui/CastItem";
 import MovieItem, { MovieProp } from "../../ui/MovieItem";
+import RadialChartScore from "../../ui/RadialChartScore";
 import RowContainer from "../../ui/RowContainer";
 import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
@@ -35,8 +36,11 @@ export default function MovieDetail() {
             style={{
               backgroundImage: `linear-gradient(rgba(178, 204, 209, 0.623), rgba(113, 113, 136, 0.849)),url(${IMAGE_URL}${movieDetail.backdrop_path})`,
             }}
-            className="w-full h-[22rem]  rounded-2xl bg-no-repeat bg-cover  text-center "
+            className="w-full h-[22rem]  rounded-2xl bg-no-repeat bg-cover  text-center relative"
           >
+            <div className="absolute bottom-0 left-0">
+              <RadialChartScore score={movieDetail.vote_average} />
+            </div>
             <div className="flex flex-col text-stone-900 ml-7 mt-5  w-[30%] gap-4 md:text-lg text-sm">
               <div className="font-bold text-xl py-2">
                 {movieDetail.title || movieDetail.origional_title}

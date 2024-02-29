@@ -6,6 +6,7 @@ import { useTVShow } from "./useTVShow";
 import RowContainer from "../../ui/RowContainer";
 import CastItem, { CastProp } from "../../ui/CastItem";
 import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
+import RadialChartScore from "../../ui/RadialChartScore";
 
 export default function TVShowDetail() {
   const { tvShowDetail, isLoading } = useTVShow();
@@ -35,8 +36,11 @@ export default function TVShowDetail() {
             style={{
               backgroundImage: `linear-gradient(rgba(178, 204, 209, 0.623), rgba(113, 113, 136, 0.849)),url(${IMAGE_URL}${tvShowDetail.backdrop_path})`,
             }}
-            className="w-full h-[22rem]  rounded-2xl bg-no-repeat bg-cover "
+            className="w-full h-[22rem]  rounded-2xl bg-no-repeat bg-cover relative text-center"
           >
+            <div className="absolute bottom-0 left-0">
+              <RadialChartScore score={tvShowDetail.vote_average} />
+            </div>
             <div className="flex flex-col text-stone-900 ml-7 mt-5  w-[30%] gap-4 md:text-lg text-sm">
               <div className="font-bold text-xl py-2 text-center">
                 {tvShowDetail.name || tvShowDetail.origional_name}
@@ -44,7 +48,7 @@ export default function TVShowDetail() {
               {tvShowDetail.tagline && (
                 <div>Tagline: {tvShowDetail.tagline}</div>
               )}
-              <div className="flex  gap-1 text-nowrap">
+              <div className="flex  gap-1  justify-center">
                 Genre:
                 {tvShowDetail.genres.map(
                   (genre: { id: number; name: string }) => (
