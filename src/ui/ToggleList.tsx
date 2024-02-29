@@ -21,7 +21,7 @@ function ToggleMenus({ children }: ChildrenProp) {
   const close = () => setShowToggle(false);
   return (
     <ToggleContext.Provider value={{ open, close, showToggle }}>
-      <div onMouseEnter={open} onMouseLeave={close}>
+      <div onMouseOver={open} onMouseLeave={close}>
         {children}
       </div>
     </ToggleContext.Provider>
@@ -35,8 +35,8 @@ function List({ children, id }: ChildrenProp) {
   if (showToggle)
     return createPortal(
       <ul
-        className="flex flex-col gap-2 bg-gray-200 py-3 px-1 justify-center absolute left-0 z-50 w-32 top-6 ease-out duration-700 transition mt-0 rounded-xl"
-        onMouseEnter={open}
+        className="flex flex-col gap-2 bg-gray-200 py-3 px-1 justify-center absolute left-0 z-50 w-32 top-6 transition mt-0 rounded-xl text-center"
+        onMouseOver={open}
         onMouseLeave={close}
       >
         {children}
