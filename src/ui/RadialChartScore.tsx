@@ -40,12 +40,25 @@ export default function RadialChartScore({ score }: { score: number }) {
             dataKey="uv"
             background={{ fill: "#2e2c2c" }}
             isAnimationActive={false}
-            label={{
-              position: "center",
-              fill: "white",
-              style: { fontSize: "14px", fontWeight: "bold" },
-            }}
+            // label={{
+            //   position: "center",
+            //   fill: "white",
+            //   style: { fontSize: "14px", fontWeight: "bold" },
+            // }}
           />
+          <text
+            x="50%"
+            y="50%"
+            dy={+5}
+            style={{
+              fontSize: "14px",
+              fontWeight: "bold",
+              fill: "white",
+            }}
+            textAnchor="middle"
+          >
+            {Math.round(score * 10)}%
+          </text>
         </RadialBarChart>
       </ResponsiveContainer>
     </div>
