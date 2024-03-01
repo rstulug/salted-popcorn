@@ -96,14 +96,14 @@ export default function TVShowDetail() {
           </RowContainer>
         </div>
       )}
-      {tvShowDetail.similar.results.length > 0 && (
+      {tvShowDetail.recommendations.results.length > 0 && (
         <div className="flex mt-4 flex-col">
           <span className="text-2xl font-bold mb-2 underline">
-            Similar Tv Shows
+            Recommendations
           </span>
           <RowContainer>
             <div className="flex gap-4">
-              {tvShowDetail.similar.results.map(
+              {tvShowDetail.recommendations.results.map(
                 (tvshow: TVShowProp["tvshow"]) => (
                   <TVShowItem tvshow={tvshow} key={tvshow.id} />
                 )

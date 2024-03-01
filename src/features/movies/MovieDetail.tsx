@@ -110,16 +110,18 @@ export default function MovieDetail() {
           </RowContainer>
         </div>
       )}
-      {movieDetail.similar.results.length > 0 && (
+      {movieDetail.recommendations.results.length > 0 && (
         <div className="flex mt-4 flex-col">
           <span className="text-2xl font-bold mb-2 underline">
-            Similar Movies
+            Recommendations
           </span>
           <RowContainer>
             <div className="flex gap-4">
-              {movieDetail.similar.results.map((movie: MovieProp["movie"]) => (
-                <MovieItem movie={movie} key={movie.id} />
-              ))}
+              {movieDetail.recommendations.results.map(
+                (movie: MovieProp["movie"]) => (
+                  <MovieItem movie={movie} key={movie.id} />
+                )
+              )}
             </div>
           </RowContainer>
         </div>
