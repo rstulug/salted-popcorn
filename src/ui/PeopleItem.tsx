@@ -14,9 +14,9 @@ export default function PeopleItem({ actor }: ActorProps) {
   return (
     <Link
       to={`/people/${actor.id}`}
-      className=" border-sky-400 rounded-md border-2  hover:scale-105 pb-2 w-full flex justify-center items-start"
+      className=" border-sky-400 rounded-md border-2  hover:scale-105 pb-2 w-full flex justify-center items-start h-[20rem]"
     >
-      <div className="flex justify-center flex-col w-48 items-start">
+      <div className="flex justify-center flex-col w-full items-start">
         <img
           src={
             actor.profile_path
@@ -24,7 +24,7 @@ export default function PeopleItem({ actor }: ActorProps) {
               : "/default_user.jpg"
           }
           alt={actor.name || actor.original_name}
-          className="w-full"
+          className="w-full h-[17rem] object-cover"
         />
         <div className="text-white w-full text-center text-md mb-2">
           {actor.original_name}

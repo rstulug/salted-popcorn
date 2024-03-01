@@ -17,7 +17,7 @@ function TVShowItem({ tvshow }: TVShowProp) {
   return (
     <Link
       to={`/tv-shows/${tvshow.id}`}
-      className=" border-sky-400 rounded-md border-2  pb-2 flex justify-center items-start w-[11rem]"
+      className=" border-sky-400 rounded-md border-2  pb-2 flex justify-center items-start w-full h-[23rem]"
     >
       <div className="flex justify-center flex-col w-full items-start">
         <div className="relative mb-6">
@@ -28,9 +28,9 @@ function TVShowItem({ tvshow }: TVShowProp) {
                 : "/default_image.jpg"
             }
             alt={tvshow.name}
-            className="w-full"
+            className="w-full h-[18rem] object-cover"
           />
-          <div className="absolute right-0 -bottom-8">
+          <div className="absolute right-0 -bottom-6">
             <RadialChartScore score={tvshow.vote_average} />
           </div>
         </div>
