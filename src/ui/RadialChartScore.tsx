@@ -19,7 +19,7 @@ export default function RadialChartScore({ score }: { score: number }) {
     { name: "Score", uv: Math.round(score * 10), fill: fillColor },
   ];
   return (
-    <div className="w-16 h-16">
+    <div className="w-14 h-14 relative">
       <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
           width={750}
@@ -38,29 +38,20 @@ export default function RadialChartScore({ score }: { score: number }) {
           />
           <RadialBar
             dataKey="uv"
-            background={{ fill: "#2e2c2c" }}
+            background={{ fill: "#131212" }}
             isAnimationActive={false}
+
             // label={{
             //   position: "center",
             //   fill: "white",
             //   style: { fontSize: "14px", fontWeight: "bold" },
             // }}
           />
-          <text
-            x="50%"
-            y="50%"
-            dy={+5}
-            style={{
-              fontSize: "14px",
-              fontWeight: "bold",
-              fill: "white",
-            }}
-            textAnchor="middle"
-          >
-            {Math.round(score * 10)}%
-          </text>
         </RadialBarChart>
       </ResponsiveContainer>
+      <div className="w-8 h-8 absolute  top-3  left-3 bg-black rounded-full flex items-center justify-center">
+        <span className="text-white text-xs  ">{Math.ceil(score * 10)}%</span>
+      </div>
     </div>
   );
 }

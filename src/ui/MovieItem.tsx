@@ -17,7 +17,7 @@ function MovieItem({ movie }: MovieProp) {
   return (
     <Link
       to={`/movie/${movie.id}`}
-      className=" border-sky-400 rounded-md border-2  hover:scale-105 pb-2 flex justify-center items-start w-44"
+      className=" border-sky-400 rounded-md border-2  pb-2 flex justify-center items-start w-[11rem]"
     >
       <div className="flex justify-center flex-col w-full items-start ">
         <div className="relative mb-6">
@@ -28,7 +28,7 @@ function MovieItem({ movie }: MovieProp) {
                 : "/default_image.jpg"
             }
             alt={movie.title}
-            className="w-full "
+            className="w-full  object-fill"
           />
           <div className="absolute -bottom-8 right-0">
             <RadialChartScore score={movie.vote_average} />

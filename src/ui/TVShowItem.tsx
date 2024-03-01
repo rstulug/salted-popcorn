@@ -17,7 +17,7 @@ function TVShowItem({ tvshow }: TVShowProp) {
   return (
     <Link
       to={`/tv-shows/${tvshow.id}`}
-      className=" border-sky-400 rounded-md border-2  hover:scale-105 pb-2 flex justify-center items-start w-44"
+      className=" border-sky-400 rounded-md border-2  pb-2 flex justify-center items-start w-[11rem]"
     >
       <div className="flex justify-center flex-col w-full items-start">
         <div className="relative mb-6">
