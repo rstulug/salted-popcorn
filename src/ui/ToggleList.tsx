@@ -35,7 +35,7 @@ function List({ children, id }: ChildrenProp) {
   if (showToggle)
     return createPortal(
       <ul
-        className="flex flex-col gap-2 bg-gray-200 py-3 px-1 justify-center absolute left-0 z-50 w-32 top-6 transition mt-0 rounded-xl text-center"
+        className="flex flex-col gap-2 bg-gray-200 py-3 px-1 justify-center absolute left-0 z-50 w-32 top-6 transition mt-0 rounded-xl text-center "
         onMouseOver={open}
         onMouseLeave={close}
       >
