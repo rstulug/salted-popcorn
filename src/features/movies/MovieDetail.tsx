@@ -41,7 +41,7 @@ export default function MovieDetail() {
             <div className="absolute bottom-0 left-0">
               <RadialChartScore score={movieDetail.vote_average} />
             </div>
-            <div className="flex flex-col text-stone-900 ml-7 mt-5  w-[30%] gap-4 md:text-lg text-sm">
+            <div className="flex flex-col text-stone-900 ml-7 mt-2  w-[50%] gap-4 md:text-lg text-sm">
               <div className="font-bold text-xl py-2">
                 {movieDetail.title || movieDetail.origional_title}
               </div>
@@ -80,14 +80,16 @@ export default function MovieDetail() {
               </div>
 
               {movieDetail.homepage && (
-                <Button
-                  btnName="Go to Homepage"
-                  style="iconic"
-                  size="regular"
-                  icon={<FaCirclePlay />}
-                  to={movieDetail.homepage}
-                  targetOutside={true}
-                />
+                <div className="w-[60%] mx-auto">
+                  <Button
+                    btnName="Go to Homepage"
+                    style="iconic"
+                    size="regular"
+                    icon={<FaCirclePlay />}
+                    to={movieDetail.homepage}
+                    targetOutside={true}
+                  />
+                </div>
               )}
             </div>
           </div>
