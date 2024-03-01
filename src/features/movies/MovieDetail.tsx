@@ -41,7 +41,7 @@ export default function MovieDetail() {
             <div className="absolute bottom-0 left-0">
               <RadialChartScore score={movieDetail.vote_average} />
             </div>
-            <div className="flex flex-col text-stone-900 ml-7 mt-5  w-[30%] gap-4 md:text-lg text-sm">
+            <div className="flex flex-col text-stone-900 ml-7 mt-2  w-[50%] gap-4 md:text-lg text-sm">
               <div className="font-bold text-xl py-2">
                 {movieDetail.title || movieDetail.origional_title}
               </div>
@@ -80,14 +80,16 @@ export default function MovieDetail() {
               </div>
 
               {movieDetail.homepage && (
-                <Button
-                  btnName="Go to Homepage"
-                  style="iconic"
-                  size="regular"
-                  icon={<FaCirclePlay />}
-                  to={movieDetail.homepage}
-                  targetOutside={true}
-                />
+                <div className="w-[60%] mx-auto">
+                  <Button
+                    btnName="Go to Homepage"
+                    style="iconic"
+                    size="regular"
+                    icon={<FaCirclePlay />}
+                    to={movieDetail.homepage}
+                    targetOutside={true}
+                  />
+                </div>
               )}
             </div>
           </div>
@@ -108,16 +110,18 @@ export default function MovieDetail() {
           </RowContainer>
         </div>
       )}
-      {movieDetail.similar.results.length > 0 && (
+      {movieDetail.recommendations.results.length > 0 && (
         <div className="flex mt-4 flex-col">
           <span className="text-2xl font-bold mb-2 underline">
-            Similar Movies
+            Recommendations
           </span>
           <RowContainer>
             <div className="flex gap-4">
-              {movieDetail.similar.results.map((movie: MovieProp["movie"]) => (
-                <MovieItem movie={movie} key={movie.id} />
-              ))}
+              {movieDetail.recommendations.results.map(
+                (movie: MovieProp["movie"]) => (
+                  <MovieItem movie={movie} key={movie.id} />
+                )
+              )}
             </div>
           </RowContainer>
         </div>

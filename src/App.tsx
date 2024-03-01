@@ -15,6 +15,7 @@ import People from "./pages/People";
 import MovieDetail from "./features/movies/MovieDetail";
 import TVShowDetail from "./features/tv-shows/TVShowDetail";
 import PeopleDetail from "./features/people/PeopleDetail";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
       <Toaster
         position="top-center"
         gutter={12}

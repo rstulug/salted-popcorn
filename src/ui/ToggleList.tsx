@@ -47,7 +47,10 @@ function List({ children, id }: ChildrenProp) {
 
 function ListItem({ where, to }: { where: string; to: string }) {
   return (
-    <Link to={to} className=" text-black text-sm">
+    <Link
+      to={to}
+      className=" text-black text-sm hover:bg-sky-300 h-full py-1 rounded-lg"
+    >
       {where}
     </Link>
   );
