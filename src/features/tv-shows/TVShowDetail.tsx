@@ -3,10 +3,9 @@ import Button from "../../ui/Button";
 import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
 import { useTVShow } from "./useTVShow";
-import RowContainer from "../../ui/RowContainer";
-import CastItem, { CastProp } from "../../ui/CastItem";
-import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
+
 import RadialChartScore from "../../ui/RadialChartScore";
+import SliderItem from "../../ui/SliderItem";
 
 export default function TVShowDetail() {
   const { tvShowDetail, isLoading } = useTVShow();
@@ -87,13 +86,7 @@ export default function TVShowDetail() {
       {tvShowDetail.credits.cast.length > 0 && (
         <div className="flex mt-4 flex-col">
           <span className="text-2xl font-bold mb-2 underline">Cast</span>
-          <RowContainer>
-            <div className="flex gap-4">
-              {tvShowDetail.credits.cast.map((cast: CastProp["cast"]) => (
-                <CastItem cast={cast} key={cast.id} />
-              ))}
-            </div>
-          </RowContainer>
+          <SliderItem data={tvShowDetail.credits.cast} type="cast" />
         </div>
       )}
       {tvShowDetail.recommendations.results.length > 0 && (
@@ -101,15 +94,10 @@ export default function TVShowDetail() {
           <span className="text-2xl font-bold mb-2 underline">
             Recommendations
           </span>
-          <RowContainer>
-            <div className="flex gap-4">
-              {tvShowDetail.recommendations.results.map(
-                (tvshow: TVShowProp["tvshow"]) => (
-                  <TVShowItem tvshow={tvshow} key={tvshow.id} />
-                )
-              )}
-            </div>
-          </RowContainer>
+          <SliderItem
+            data={tvShowDetail.recommendations.results}
+            type="tvshow"
+          />
         </div>
       )}
     </div>

@@ -1,8 +1,6 @@
 import Button from "../../ui/Button";
-import CastItem, { CastProp } from "../../ui/CastItem";
-import MovieItem, { MovieProp } from "../../ui/MovieItem";
 import RadialChartScore from "../../ui/RadialChartScore";
-import RowContainer from "../../ui/RowContainer";
+import SliderItem from "../../ui/SliderItem";
 import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
 import { useMovie } from "./useMovie";
@@ -29,7 +27,7 @@ export default function MovieDetail() {
                   : "/default_cinema.jpg"
               }
               alt={movieDetail.title}
-              className=" h-[22rem] w-auto object-fit rounded-xl "
+              className=" h-[22rem] w-auto object-cover rounded-xl "
             />
           </div>
           <div
@@ -101,13 +99,7 @@ export default function MovieDetail() {
       {movieDetail.credits.cast.length > 0 && (
         <div className="flex mt-4 flex-col">
           <span className="text-2xl font-bold mb-2 underline">Cast</span>
-          <RowContainer>
-            <div className="flex gap-4">
-              {movieDetail.credits.cast.map((cast: CastProp["cast"]) => (
-                <CastItem cast={cast} key={cast.id} />
-              ))}
-            </div>
-          </RowContainer>
+          <SliderItem data={movieDetail.credits.cast} type="cast" />
         </div>
       )}
       {movieDetail.recommendations.results.length > 0 && (
@@ -115,15 +107,7 @@ export default function MovieDetail() {
           <span className="text-2xl font-bold mb-2 underline">
             Recommendations
           </span>
-          <RowContainer>
-            <div className="flex gap-4">
-              {movieDetail.recommendations.results.map(
-                (movie: MovieProp["movie"]) => (
-                  <MovieItem movie={movie} key={movie.id} />
-                )
-              )}
-            </div>
-          </RowContainer>
+          <SliderItem data={movieDetail.recommendations.results} type="movie" />
         </div>
       )}
     </div>

@@ -3,9 +3,8 @@ import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
 import { usePeopleDetail } from "./usePeopleDetail";
 import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
-import RowContainer from "../../ui/RowContainer";
-import MovieItem, { MovieProp } from "../../ui/MovieItem";
-import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
+
+import SliderItem from "../../ui/SliderItem";
 
 export default function PeopleDetail() {
   const { peopleDetail, isLoading } = usePeopleDetail();
@@ -55,13 +54,7 @@ export default function PeopleDetail() {
         {peopleDetail.movie_credits.cast.length > 0 && (
           <div>
             <span className="text-2xl font-bold mb-2 underline">Movies</span>
-            <RowContainer>
-              {peopleDetail.movie_credits.cast.map(
-                (movie: MovieProp["movie"]) => (
-                  <MovieItem movie={movie} key={movie.id} />
-                )
-              )}
-            </RowContainer>
+            <SliderItem data={peopleDetail.movie_credits.cast} type="movie" />
           </div>
         )}
         <div>
@@ -70,13 +63,7 @@ export default function PeopleDetail() {
               <span className="text-2xl font-bold mb-2 underline">
                 TV Shows
               </span>
-              <RowContainer>
-                {peopleDetail.tv_credits.cast.map(
-                  (tvshow: TVShowProp["tvshow"]) => (
-                    <TVShowItem tvshow={tvshow} key={tvshow.id} />
-                  )
-                )}
-              </RowContainer>
+              <SliderItem data={peopleDetail.tv_credits.cast} type="tvshow" />
             </div>
           )}
         </div>
