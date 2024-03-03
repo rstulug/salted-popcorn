@@ -15,14 +15,17 @@ function People() {
   if (isLoading) return <Spinner />;
 
   return (
-    <div className="flex justify-center flex-row gap-4 w-full">
-      <div className="flex flex-col w-full">
-        <GridContainer>
-          {people.results.map((actor: ActorProps["actor"]) => (
-            <PeopleItem actor={actor} key={actor.id} />
-          ))}
-        </GridContainer>
-        <Pagination pages={people.total_pages} curPage={curPage} />
+    <div className="flex flex-row">
+      <div className="w-[20%]"></div>
+      <div className="flex justify-center flex-row gap-4 w-full flex-1">
+        <div className="flex flex-col w-full">
+          <GridContainer>
+            {people.results.map((actor: ActorProps["actor"]) => (
+              <PeopleItem actor={actor} key={actor.id} />
+            ))}
+          </GridContainer>
+          <Pagination pages={people.total_pages} curPage={curPage} />
+        </div>
       </div>
     </div>
   );

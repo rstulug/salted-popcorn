@@ -16,13 +16,16 @@ function UpcomingMovies() {
 
   if (isLoading) return <Spinner />;
   return (
-    <div className="flex flex-col">
-      <GridContainer>
-        {upcomingMovies.results.map((movie: MovieProp["movie"]) => (
-          <MovieItem movie={movie} key={movie.id} />
-        ))}
-      </GridContainer>
-      <Pagination pages={upcomingMovies.total_pages} curPage={curPage} />
+    <div className="flex flex-row">
+      <div className="w-[20%]"></div>
+      <div className="flex flex-col flex-1">
+        <GridContainer>
+          {upcomingMovies.results.map((movie: MovieProp["movie"]) => (
+            <MovieItem movie={movie} key={movie.id} />
+          ))}
+        </GridContainer>
+        <Pagination pages={upcomingMovies.total_pages} curPage={curPage} />
+      </div>
     </div>
   );
 }

@@ -107,6 +107,7 @@ export default function MovieDetail() {
           <span className="text-2xl font-bold mb-2 underline">
             Recommendations
           </span>
+
           <SliderItem data={movieDetail.recommendations.results} type="movie" />
         </div>
       )}

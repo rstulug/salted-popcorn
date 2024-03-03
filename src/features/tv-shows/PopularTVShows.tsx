@@ -14,13 +14,16 @@ function PopularTVShows() {
     : Number(searchParams.get("page"));
   if (isLoading) return <Spinner />;
   return (
-    <div className="flex flex-col">
-      <GridContainer>
-        {popularTVShows.results.map((tvShow: TVShowProp["tvshow"]) => (
-          <TVShowItem tvshow={tvShow} key={tvShow.id} />
-        ))}
-      </GridContainer>
-      <Pagination pages={popularTVShows.total_pages} curPage={curPage} />
+    <div className="flex flex-row">
+      <div className="w-[20%]"></div>
+      <div className="flex flex-col flex-1">
+        <GridContainer>
+          {popularTVShows.results.map((tvShow: TVShowProp["tvshow"]) => (
+            <TVShowItem tvshow={tvShow} key={tvShow.id} />
+          ))}
+        </GridContainer>
+        <Pagination pages={popularTVShows.total_pages} curPage={curPage} />
+      </div>
     </div>
   );
 }

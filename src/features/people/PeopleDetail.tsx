@@ -28,7 +28,7 @@ export default function PeopleDetail() {
                   : "/default_user.jpg"
               }
               alt={`${peopleDetail.name}`}
-              className="w-full h-[22rem] object-fit rounded-xl "
+              className="w-full h-[22rem] object-cover rounded-xl "
             />
           </div>
           <div className="w-[70%] text-sky-200 flex flex-col gap-5">

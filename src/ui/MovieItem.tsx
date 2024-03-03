@@ -17,7 +17,7 @@ function MovieItem({ movie }: MovieProp) {
   return (
     <Link
       to={`/movie/${movie.id}`}
-      className=" border-sky-400 rounded-md border-2 pb-2 flex justify-center items-start  h-[23rem] w-[12rem]"
+      className=" border-sky-400 rounded-md border-2 pb-2 flex justify-center items-start w-[12rem] h-full"
     >
       <div className="flex justify-center flex-col w-full items-start">
         <div className="relative mb-6">

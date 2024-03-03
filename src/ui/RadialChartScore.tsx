@@ -8,11 +8,11 @@ import {
 export default function RadialChartScore({ score }: { score: number }) {
   if (!score) return null;
   const fillColor =
-    score < 5
+    Math.ceil(score) <= 5
       ? "#DB2C17"
-      : score < 7
-      ? "#DBA617"
-      : score < 8
+      : score <= 7
+      ? "#8a6605"
+      : score <= 8
       ? "#DBDB17"
       : "#2CDB17";
   const data1 = [
