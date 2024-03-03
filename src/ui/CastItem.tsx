@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { IMAGE_URL } from "../utils/constant";
-// import { useState } from "react";
 
 export interface CastProp {
   cast: {
@@ -12,11 +11,10 @@ export interface CastProp {
 }
 
 export default function CastItem({ cast }: CastProp) {
-  //   const [curPage, setCurPage] = useState<number>(1);
   return (
     <Link
       to={`/people/${cast.id}`}
-      className="border-sky-400 rounded-md border-2 pb-2 flex justify-center items-start  h-[23rem] w-[12rem]"
+      className="border-sky-400 rounded-md border-2 pb-2 flex justify-center items-start  h-full w-[12rem]"
     >
       <div className="flex justify-center flex-col w-full items-start">
         <img

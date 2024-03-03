@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slick-list {
+  display: grid;
+  height: 100%;
+  grid-auto-flow: row;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-initialized .slick-slide > div {
+  height: 100%;
+}
