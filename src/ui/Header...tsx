@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
-import { FaClapperboard, FaTv, FaPersonHalfDress } from "react-icons/fa6";
+import {
+  FaClapperboard,
+  FaTv,
+  FaPersonHalfDress,
+  FaMagnifyingGlass,
+  FaXmark,
+} from "react-icons/fa6";
 import ToggleMenus from "./ToggleList";
 
-//import { useState } from "react";
+import { useState } from "react";
 
 function Header() {
-  //const [showMovie, setShowMovie] = useState<boolean>(false);
-  //const [showTVShows, setShowTVShows] = useState<boolean>(false);
+  const [showSearch, setShowSearch] = useState<boolean>(false);
   return (
     <div className="w-full flex sm:justify-between text-white flex-col sm:flex-row gap-4 sm:gap-0 font-semibold items-center ">
       <div className="flex gap-2 items-center flex-col sm:flex-row w-3/12">
@@ -67,7 +72,20 @@ function Header() {
         </ToggleMenus>
       </div>
 
-      <div className="sm:justify-end flex w-3/12 justify-center">Search</div>
+      <div className="sm:justify-end flex w-3/12 justify-center items-center">
+        {showSearch && (
+          <input
+            type="text"
+            placeholder="Movies, TV Show or People"
+            className="rounded-lg bg-gray-300 outline-none text-black placeholder:pl-6 pl-4 w-full "
+          />
+        )}
+        {showSearch ? (
+          <FaXmark onClick={() => setShowSearch(false)} />
+        ) : (
+          <FaMagnifyingGlass onClick={() => setShowSearch(true)} />
+        )}
+      </div>
     </div>
   );
 }
