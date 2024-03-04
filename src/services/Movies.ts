@@ -66,3 +66,17 @@ export async function getMovieById(movieId: string | undefined) {
   const data = await res.json();
   return data;
 }
+
+export async function getTrendMovies() {
+  const res = await fetch(
+    "https://api.themoviedb.org/3/trending/movie/week?language=en-US",
+    options
+  );
+
+  if (!res.ok)
+    throw new Error("An error occured during fetching trending movies");
+
+  const data = await res.json();
+
+  return data;
+}

@@ -70,3 +70,17 @@ export async function getTVShowDetail(id: string | undefined) {
 
   return data;
 }
+
+export async function getTrendTVShows() {
+  const res = await fetch(
+    "https://api.themoviedb.org/3/trending/tv/week?language=en-US",
+    options
+  );
+
+  if (!res.ok)
+    throw new Error("An error occured durign fetchin trending tv shows");
+
+  const data = await res.json();
+
+  return data;
+}
