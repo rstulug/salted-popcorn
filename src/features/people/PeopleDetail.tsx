@@ -15,7 +15,7 @@ export default function PeopleDetail() {
     : peopleDetail?.biography.slice(0, 400);
 
   if (isLoading) return <Spinner />;
-  console.log(peopleDetail);
+
   return (
     <div className="flex flex-col gap-5">
       <div className="max-w-screen-xl mx-auto w-full mt-[2rem] z-10">

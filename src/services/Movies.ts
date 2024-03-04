@@ -57,7 +57,7 @@ export async function getTopRatedMovies(curPage: number) {
 
 export async function getMovieById(movieId: string | undefined) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=credits,recommendations`,
+    `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=credits,recommendations,videos`,
     options
   );
   if (!res.ok)

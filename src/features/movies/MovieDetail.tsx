@@ -5,11 +5,20 @@ import Spinner from "../../ui/Spinner";
 import { IMAGE_URL } from "../../utils/constant";
 import { useMovie } from "./useMovie";
 import { FaCirclePlay } from "react-icons/fa6";
+import TrailerVideos from "../../ui/TrailerVideos";
 
 export default function MovieDetail() {
   const { movieDetail, isLoading } = useMovie();
 
   if (isLoading) return <Spinner />;
+
+  const trailerVideos = movieDetail.videos.results
+    .filter(
+      (video: { name: string; site: string }) =>
+        video.name.toLowerCase().includes("trailer") &&
+        video.site.toLowerCase() === "youtube"
+    )
+    .map((url: { key: string }) => url.key);
 
   return (
     <div className="flex flex-col gap-5">
@@ -95,6 +104,9 @@ export default function MovieDetail() {
       </div>
       <div className="mt-[2rem] text-center font-semibold text-sky-100 text-xl">
         {movieDetail.overview}
+      </div>
+      <div className="w-[70%] mx-auto">
+        {trailerVideos.length > 0 && <TrailerVideos urls={trailerVideos} />}
       </div>
       {movieDetail.credits.cast.length > 0 && (
         <div className="flex mt-4 flex-col">
