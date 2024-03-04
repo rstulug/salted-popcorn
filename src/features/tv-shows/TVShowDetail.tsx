@@ -6,11 +6,20 @@ import { useTVShow } from "./useTVShow";
 
 import RadialChartScore from "../../ui/RadialChartScore";
 import SliderItem from "../../ui/SliderItem";
+import TrailerVideos from "../../ui/TrailerVideos";
 
 export default function TVShowDetail() {
   const { tvShowDetail, isLoading } = useTVShow();
 
   if (isLoading) return <Spinner />;
+
+  const trailerVideos = tvShowDetail.videos.results
+    .filter(
+      (video: { name: string; site: string }) =>
+        video.name.toLowerCase().includes("trailer") &&
+        video.site.toLowerCase() === "youtube"
+    )
+    .map((url: { key: string }) => url.key);
 
   return (
     <div className="flex flex-col gap-5">
@@ -82,6 +91,9 @@ export default function TVShowDetail() {
       </div>
       <div className="mt-[2rem] text-center font-semibold text-sky-100">
         {tvShowDetail.overview}
+      </div>
+      <div className="w-[70%] mx-auto">
+        {trailerVideos.length > 0 && <TrailerVideos urls={trailerVideos} />}
       </div>
       {tvShowDetail.credits.cast.length > 0 && (
         <div className="flex mt-4 flex-col">

@@ -37,7 +37,7 @@ function MovieItem({ movie }: MovieProp) {
         </div>
 
         <div className="text-white w-full text-center text-md mb-2">
-          {movie.title || movie.original_title}P
+          {movie.title || movie.original_title}
         </div>
         <div className=" text-zinc-300 text-xs font-thin ml-2">
           {movie.release_date}

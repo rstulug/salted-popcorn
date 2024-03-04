@@ -60,7 +60,7 @@ export async function getTopRatedTVShows(curPage: number) {
 
 export async function getTVShowDetail(id: string | undefined) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/tv/${id}?language=en-US&append_to_response=credits,recommendations`,
+    `https://api.themoviedb.org/3/tv/${id}?language=en-US&append_to_response=credits,recommendations,videos`,
     options
   );
 
