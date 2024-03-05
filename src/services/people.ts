@@ -33,3 +33,19 @@ export async function getPeopleDetail(id: string | undefined) {
 
   return data;
 }
+
+export async function getSearchPeople(
+  searchQuery: string | null,
+  curPage: number
+) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/search/person?query=${searchQuery}&include_adult=false&language=en-US&page=${curPage}`,
+    options
+  );
+
+  if (!res.ok) throw new Error("An error occured during searching tv shows");
+
+  const data = await res.json();
+
+  return data;
+}

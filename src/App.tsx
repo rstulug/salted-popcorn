@@ -17,6 +17,9 @@ import TVShowDetail from "./features/tv-shows/TVShowDetail";
 import PeopleDetail from "./features/people/PeopleDetail";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Search from "./pages/Search";
+import SearchedMovies from "./features/search/SearchedMovies";
+import SearchedTVShows from "./features/search/SearchedTVShows";
+import SearchedPeople from "./features/search/SearchedPeople";
 
 const router = createBrowserRouter([
   {
@@ -78,12 +81,15 @@ const router = createBrowserRouter([
         children: [
           {
             path: "movies",
+            element: <SearchedMovies />,
           },
           {
             path: "tv-shows",
+            element: <SearchedTVShows />,
           },
           {
             path: "people",
+            element: <SearchedPeople />,
           },
         ],
       },

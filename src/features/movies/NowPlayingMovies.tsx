@@ -3,8 +3,9 @@ import GridContainer from "../../ui/GridContainer";
 import MovieItem, { MovieProp } from "../../ui/MovieItem";
 import Pagination from "../../ui/Pagination";
 import Spinner from "../../ui/Spinner";
-import { useNowPlayingMovies } from "./UseNowPlayingMovies";
+
 import EmptyPage from "../../ui/EmptyPage";
+import { useNowPlayingMovies } from "./useNowPlayingMovies";
 
 function NowPlayingMovies() {
   const { nowPlayingMovies, isLoading, error } = useNowPlayingMovies();
