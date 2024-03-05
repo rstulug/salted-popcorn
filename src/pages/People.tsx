@@ -4,15 +4,17 @@ import GridContainer from "../ui/GridContainer";
 import PeopleItem, { ActorProps } from "../ui/PeopleItem";
 import Spinner from "../ui/Spinner";
 import Pagination from "../ui/Pagination";
+import EmptyPage from "../ui/EmptyPage";
 
 function People() {
-  const { people, isLoading } = usePeople();
+  const { people, isLoading, error } = usePeople();
   const [searchParams] = useSearchParams();
 
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
   if (isLoading) return <Spinner />;
+  if (error || people.results.length < 1) return <EmptyPage />;
 
   return (
     <div className="flex flex-row">

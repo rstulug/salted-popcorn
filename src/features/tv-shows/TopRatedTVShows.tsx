@@ -4,15 +4,17 @@ import Spinner from "../../ui/Spinner";
 import { useTopRatedTVShows } from "./useTopRatedTVShows";
 import Pagination from "../../ui/Pagination";
 import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
+import EmptyPage from "../../ui/EmptyPage";
 
 function TopRatedTVShows() {
-  const { topRatedTVShows, isLoading } = useTopRatedTVShows();
+  const { topRatedTVShows, isLoading, error } = useTopRatedTVShows();
   const [searchParams] = useSearchParams();
 
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
   if (isLoading) return <Spinner />;
+  if (error || topRatedTVShows.results.length < 1) return <EmptyPage />;
   return (
     <div className="flex flex-row">
       <div className="w-[20%]"></div>

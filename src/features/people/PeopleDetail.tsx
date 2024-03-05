@@ -5,9 +5,10 @@ import { usePeopleDetail } from "./usePeopleDetail";
 import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
 
 import SliderItem from "../../ui/SliderItem";
+import EmptyPage from "../../ui/EmptyPage";
 
 export default function PeopleDetail() {
-  const { peopleDetail, isLoading } = usePeopleDetail();
+  const { peopleDetail, isLoading, error } = usePeopleDetail();
   const [showMore, setShowMore] = useState<boolean>(false);
 
   const peopleBiography = showMore
@@ -15,6 +16,7 @@ export default function PeopleDetail() {
     : peopleDetail?.biography.slice(0, 400);
 
   if (isLoading) return <Spinner />;
+  if (error) return <EmptyPage />;
 
   return (
     <div className="flex flex-col gap-5">

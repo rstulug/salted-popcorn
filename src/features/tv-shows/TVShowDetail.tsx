@@ -7,11 +7,13 @@ import { useTVShow } from "./useTVShow";
 import RadialChartScore from "../../ui/RadialChartScore";
 import SliderItem from "../../ui/SliderItem";
 import TrailerVideos from "../../ui/TrailerVideos";
+import EmptyPage from "../../ui/EmptyPage";
 
 export default function TVShowDetail() {
-  const { tvShowDetail, isLoading } = useTVShow();
+  const { tvShowDetail, isLoading, error } = useTVShow();
 
   if (isLoading) return <Spinner />;
+  if (error) return <EmptyPage />;
 
   const trailerVideos = tvShowDetail.videos.results
     .filter(

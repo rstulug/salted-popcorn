@@ -8,7 +8,11 @@ export function useAiringTodayTVShows() {
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
-  const { data: airingTodayTVShows, isLoading } = useQuery({
+  const {
+    data: airingTodayTVShows,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["tv-shows", "airing-today", curPage],
     queryFn: () => getAiringTodayTVShows(curPage),
   });
@@ -30,5 +34,5 @@ export function useAiringTodayTVShows() {
       queryFn: () => getAiringTodayTVShows(curPage - 1),
     });
   }
-  return { airingTodayTVShows, isLoading };
+  return { airingTodayTVShows, isLoading, error };
 }

@@ -8,7 +8,7 @@ export function usePeople() {
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
-  const { data: people, isLoading } = useQuery({
+  const { data: people, isLoading, error } = useQuery({
     queryKey: ["people", "popular", curPage],
     queryFn: () => getPeople(curPage),
   });
@@ -31,5 +31,5 @@ export function usePeople() {
     });
   }
 
-  return { people, isLoading };
+  return { people, isLoading, error };
 }

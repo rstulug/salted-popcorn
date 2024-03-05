@@ -10,8 +10,9 @@ function GridContainer({ children }: Props) {
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fill, minmax(11rem,1fr)",
-        gap: "2rem",
+        gap: "1rem",
       }}
+      className="mt-2"
     >
       {children}
     </div>

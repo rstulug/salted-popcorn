@@ -9,7 +9,11 @@ export function useNowPlayingMovies() {
     ? 1
     : Number(searchParams.get("page"));
 
-  const { data: nowPlayingMovies, isLoading } = useQuery({
+  const {
+    data: nowPlayingMovies,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["movies", "now-playing", curPage],
     queryFn: () => getNowPlayingMovies(curPage),
   });
@@ -31,5 +35,5 @@ export function useNowPlayingMovies() {
       queryFn: () => getNowPlayingMovies(curPage - 1),
     });
   }
-  return { nowPlayingMovies, isLoading };
+  return { nowPlayingMovies, isLoading, error };
 }

@@ -6,11 +6,13 @@ import { IMAGE_URL } from "../../utils/constant";
 import { useMovie } from "./useMovie";
 import { FaCirclePlay } from "react-icons/fa6";
 import TrailerVideos from "../../ui/TrailerVideos";
+import EmptyPage from "../../ui/EmptyPage";
 
 export default function MovieDetail() {
-  const { movieDetail, isLoading } = useMovie();
+  const { movieDetail, isLoading, error } = useMovie();
 
   if (isLoading) return <Spinner />;
+  if (error) return <EmptyPage />;
 
   const trailerVideos = movieDetail.videos.results
     .filter(

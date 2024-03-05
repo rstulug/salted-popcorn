@@ -4,9 +4,10 @@ import MovieItem, { MovieProp } from "../../ui/MovieItem";
 import Spinner from "../../ui/Spinner";
 import { usePopularMovies } from "./usePopularMovies";
 import Pagination from "../../ui/Pagination";
+import EmptyPage from "../../ui/EmptyPage";
 
 function PopularMovies() {
-  const { popularMovies, isLoading } = usePopularMovies();
+  const { popularMovies, isLoading, error } = usePopularMovies();
 
   const [searchParams] = useSearchParams();
 
@@ -15,6 +16,7 @@ function PopularMovies() {
     : Number(searchParams.get("page"));
 
   if (isLoading) return <Spinner />;
+  if (error || popularMovies.results.length < 1) return <EmptyPage />;
   return (
     <div className="flex flex-row">
       <div className="w-[20%]"></div>

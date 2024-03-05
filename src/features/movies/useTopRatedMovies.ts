@@ -8,7 +8,11 @@ export function useTopRatedMovies() {
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
-  const { data: topRatedMovies, isLoading } = useQuery({
+  const {
+    data: topRatedMovies,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["movies", "top-rated", curPage],
     queryFn: () => getTopRatedMovies(curPage),
   });
@@ -31,5 +35,5 @@ export function useTopRatedMovies() {
     });
   }
 
-  return { topRatedMovies, isLoading };
+  return { topRatedMovies, isLoading, error };
 }

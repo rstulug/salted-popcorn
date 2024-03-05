@@ -4,10 +4,14 @@ import { useParams } from "react-router-dom";
 
 export function useTVShow() {
   const { tvshowId } = useParams();
-  const { data: tvShowDetail, isLoading } = useQuery({
+  const {
+    data: tvShowDetail,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["tv-show", tvshowId],
     queryFn: () => getTVShowDetail(tvshowId),
   });
 
-  return { tvShowDetail, isLoading };
+  return { tvShowDetail, isLoading, error };
 }

@@ -5,15 +5,17 @@ import Spinner from "../../ui/Spinner";
 import { useAiringTodayTVShows } from "./useAiringTodayTVShows";
 import Pagination from "../../ui/Pagination";
 import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
+import EmptyPage from "../../ui/EmptyPage";
 
 function AiringTodayTVShows() {
-  const { airingTodayTVShows, isLoading } = useAiringTodayTVShows();
+  const { airingTodayTVShows, isLoading, error } = useAiringTodayTVShows();
   const [searchParams] = useSearchParams();
 
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
   if (isLoading) return <Spinner />;
+  if (error || airingTodayTVShows.results.length < 1) return <EmptyPage />;
 
   return (
     <div className="flex flex-row">

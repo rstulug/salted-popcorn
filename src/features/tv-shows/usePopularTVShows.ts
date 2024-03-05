@@ -8,7 +8,11 @@ export function usePopularTVShows() {
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
-  const { data: popularTVShows, isLoading } = useQuery({
+  const {
+    data: popularTVShows,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["tv-shows", "popular", curPage],
     queryFn: () => getPopularTVShows(curPage),
   });
@@ -31,5 +35,5 @@ export function usePopularTVShows() {
     });
   }
 
-  return { popularTVShows, isLoading };
+  return { popularTVShows, isLoading, error };
 }

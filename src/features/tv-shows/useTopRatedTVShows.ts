@@ -8,7 +8,11 @@ export function useTopRatedTVShows() {
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
-  const { data: topRatedTVShows, isLoading } = useQuery({
+  const {
+    data: topRatedTVShows,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["tv-shows", "top-rated", curPage],
     queryFn: () => getTopRatedTVShows(curPage),
   });
@@ -30,5 +34,5 @@ export function useTopRatedTVShows() {
       queryFn: () => getTopRatedTVShows(curPage - 1),
     });
   }
-  return { topRatedTVShows, isLoading };
+  return { topRatedTVShows, isLoading, error };
 }

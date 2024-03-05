@@ -8,7 +8,11 @@ export function useUpcomingMovies() {
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
-  const { data: upcomingMovies, isLoading } = useQuery({
+  const {
+    data: upcomingMovies,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["movies", "up-coming", curPage],
     queryFn: () => getUpcomingMovies(curPage),
   });
@@ -30,5 +34,5 @@ export function useUpcomingMovies() {
       queryFn: () => getUpcomingMovies(curPage - 1),
     });
   }
-  return { upcomingMovies, isLoading };
+  return { upcomingMovies, isLoading, error };
 }

@@ -5,9 +5,10 @@ import Spinner from "../../ui/Spinner";
 import { useOnTVShows } from "./useOnTVShows";
 import Pagination from "../../ui/Pagination";
 import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
+import EmptyPage from "../../ui/EmptyPage";
 
 function OnTVShows() {
-  const { onTVShows, isLoading } = useOnTVShows();
+  const { onTVShows, isLoading, error } = useOnTVShows();
   const [searchParams] = useSearchParams();
 
   const curPage = !searchParams.get("page")
@@ -15,6 +16,7 @@ function OnTVShows() {
     : Number(searchParams.get("page"));
 
   if (isLoading) return <Spinner />;
+  if (error || onTVShows.results.length < 1) return <EmptyPage />;
   return (
     <div className="flex flex-row">
       <div className="w-[20%]"></div>

@@ -4,9 +4,13 @@ import { getPeopleDetail } from "../../services/people";
 
 export function usePeopleDetail() {
   const { peopleId } = useParams();
-  const { data: peopleDetail, isLoading } = useQuery({
+  const {
+    data: peopleDetail,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["people", peopleId],
     queryFn: () => getPeopleDetail(peopleId),
   });
-  return { peopleDetail, isLoading };
+  return { peopleDetail, isLoading, error };
 }

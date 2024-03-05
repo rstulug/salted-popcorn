@@ -8,7 +8,11 @@ export function useOnTVShows() {
   const curPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
-  const { data: onTVShows, isLoading } = useQuery({
+  const {
+    data: onTVShows,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["tv-shows", "on-tv", curPage],
     queryFn: () => getonTVShows(curPage),
   });
@@ -30,5 +34,5 @@ export function useOnTVShows() {
       queryFn: () => getonTVShows(curPage - 1),
     });
   }
-  return { onTVShows, isLoading };
+  return { onTVShows, isLoading, error };
 }

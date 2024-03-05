@@ -16,6 +16,7 @@ import MovieDetail from "./features/movies/MovieDetail";
 import TVShowDetail from "./features/tv-shows/TVShowDetail";
 import PeopleDetail from "./features/people/PeopleDetail";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Search from "./pages/Search";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,21 @@ const router = createBrowserRouter([
       {
         path: "tv-shows/:tvshowId",
         element: <TVShowDetail />,
+      },
+      {
+        path: "search",
+        element: <Search />,
+        children: [
+          {
+            path: "movies",
+          },
+          {
+            path: "tv-shows",
+          },
+          {
+            path: "people",
+          },
+        ],
       },
     ],
   },

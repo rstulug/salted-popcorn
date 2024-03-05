@@ -80,3 +80,16 @@ export async function getTrendMovies() {
 
   return data;
 }
+
+export async function getSearchMovies(searchQuery: string, curPage: number) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=${curPage}`,
+    options
+  );
+
+  if (!res.ok) throw new Error("An error occured during searching movies");
+
+  const data = await res.json();
+
+  return data;
+}
