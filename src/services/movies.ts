@@ -3,7 +3,7 @@ const options = {
   headers: {
     accept: "application/json",
 
-    Authorization: import.meta.env.VITE_TMDB_AUTHORIZATION_KEY,
+    Authorization: process.env.VITE_TMDB_AUTHORIZATION_KEY,
   },
 };
 
