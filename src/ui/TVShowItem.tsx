@@ -28,7 +28,7 @@ function TVShowItem({ tvshow }: TVShowProp) {
                 : "/default_image.jpg"
             }
             alt={tvshow.name}
-            className="w-full h-[18rem] object-cover"
+            className="w-full h-[18rem] object-cover rounded-md"
           />
           <div className="absolute right-0 -bottom-6">
             <RadialChartScore score={tvshow.vote_average} />

@@ -29,7 +29,7 @@ function MovieItem({ movie }: MovieProp) {
                 : "/default_image.jpg"
             }
             alt={movie.title}
-            className="w-full  h-[18rem] object-cover"
+            className="w-full  h-[18rem] object-cover rounded-md"
           />
           <div className="absolute -bottom-6 right-0">
             <RadialChartScore score={movie.vote_average} />

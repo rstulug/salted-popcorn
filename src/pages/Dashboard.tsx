@@ -24,7 +24,21 @@ function Dashboard() {
           backgroundPosition: "center center",
         }}
         className="w-full h-[30rem] rounded-b-2xl"
-      ></div>
+      >
+        <div className="flex justify-center items-center h-full text-2xl text-white flex-col gap-4 mt-[10rem] font-bold">
+          <div>All details about Movies, TV Shows and Actors.</div>
+          <div>All information that shown to you provided py</div>
+          <div>
+            <a
+              href="https://www.themoviedb.org/"
+              target="_blank"
+              className="underline text-rose-800"
+            >
+              The Movie Database
+            </a>
+          </div>
+        </div>
+      </div>
       <div className="my-4">
         {isLoadingMovies ? (
           <Spinner />

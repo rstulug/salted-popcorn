@@ -20,7 +20,7 @@ export default function SliderItem({ data, type }: ChildrenProp) {
 
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
           slidesToShow: data.length < 4 ? data.length : 4,
           slidesToScroll: data.length > 4 ? 1 : 0,

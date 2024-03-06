@@ -24,7 +24,7 @@ export default function PeopleItem({ actor }: ActorProps) {
               : "/default_user.jpg"
           }
           alt={actor.name || actor.original_name}
-          className="w-full h-[17rem] object-cover"
+          className="w-full h-[17rem] object-cover rounded-md"
         />
         <div className="text-white w-full text-center text-md mb-2">
           {actor.original_name}
