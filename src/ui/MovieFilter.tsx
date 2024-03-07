@@ -3,13 +3,13 @@ import { MOVIE_GENRES, SORT_OPTIONS } from "../utils/constant";
 import Select from "react-select";
 
 interface GenreProps {
-  value: string | null;
+  value: string | number | null;
   label: string;
 }
 
 export default function MovieFilter() {
   const genreOptions = MOVIE_GENRES.genres.map((genre) => {
-    return { value: genre.name.toLocaleLowerCase(), label: genre.name };
+    return { value: genre.id, label: genre.name };
   });
 
   const sortOptions = SORT_OPTIONS.options;
