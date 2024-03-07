@@ -6,6 +6,7 @@ import Spinner from "../../ui/Spinner";
 
 import EmptyPage from "../../ui/EmptyPage";
 import { useNowPlayingMovies } from "./useNowPlayingMovies";
+import MovieFilter from "../../ui/MovieFilter";
 
 function NowPlayingMovies() {
   const { nowPlayingMovies, isLoading, error } = useNowPlayingMovies();
@@ -19,7 +20,9 @@ function NowPlayingMovies() {
   if (error || nowPlayingMovies.results.length < 1) return <EmptyPage />;
   return (
     <div className="flex flex-row">
-      <div className="w-[20%]"></div>
+      <div className="w-[20%]">
+        <MovieFilter />
+      </div>
       <div className="flex flex-col flex-1">
         <GridContainer>
           {nowPlayingMovies.results.map((movie: MovieProp["movie"]) => (

@@ -18,7 +18,6 @@ function People() {
 
   return (
     <div className="flex flex-row">
-      <div className="w-[20%]"></div>
       <div className="flex justify-center flex-row gap-4 w-full flex-1">
         <div className="flex flex-col w-full">
           <GridContainer>
