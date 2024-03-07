@@ -19,7 +19,6 @@ function AiringTodayTVShows() {
 
   return (
     <div className="flex flex-row">
-      <div className="w-[20%]"></div>
       <div className="flex flex-col flex-1">
         <GridContainer>
           {airingTodayTVShows.results.map((tvShow: TVShowProp["tvshow"]) => (

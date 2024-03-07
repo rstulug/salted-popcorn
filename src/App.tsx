@@ -20,6 +20,8 @@ import Search from "./pages/Search";
 import SearchedMovies from "./features/search/SearchedMovies";
 import SearchedTVShows from "./features/search/SearchedTVShows";
 import SearchedPeople from "./features/search/SearchedPeople";
+import Movies from "./pages/Movies";
+import TVShows from "./pages/TVShows";
 
 const router = createBrowserRouter([
   {
@@ -28,37 +30,50 @@ const router = createBrowserRouter([
     errorElement: <PageNotFound />,
     children: [
       {
-        path: "movies/now-playing",
-        element: <NowPlayingMovies />,
+        path: "movies",
+        element: <Movies />,
+        children: [
+          {
+            path: "now-playing",
+            element: <NowPlayingMovies />,
+          },
+          {
+            path: "popular",
+            element: <PopularMovies />,
+          },
+          {
+            path: "upcoming",
+            element: <UpcomingMovies />,
+          },
+          {
+            path: "top-rated",
+            element: <TopRatedMovies />,
+          },
+        ],
       },
       {
-        path: "movies/popular",
-        element: <PopularMovies />,
+        path: "tv-shows",
+        element: <TVShows />,
+        children: [
+          {
+            path: "airing-today",
+            element: <AiringTodayTVShows />,
+          },
+          {
+            path: "popular",
+            element: <PopularTVShows />,
+          },
+          {
+            path: "on-tv",
+            element: <OnTVShows />,
+          },
+          {
+            path: "top-rated",
+            element: <TopRatedTVShows />,
+          },
+        ],
       },
-      {
-        path: "movies/upcoming",
-        element: <UpcomingMovies />,
-      },
-      {
-        path: "movies/top-rated",
-        element: <TopRatedMovies />,
-      },
-      {
-        path: "tv-shows/airing-today",
-        element: <AiringTodayTVShows />,
-      },
-      {
-        path: "tv-shows/popular",
-        element: <PopularTVShows />,
-      },
-      {
-        path: "tv-shows/on-tv",
-        element: <OnTVShows />,
-      },
-      {
-        path: "tv-shows/top-rated",
-        element: <TopRatedTVShows />,
-      },
+
       {
         path: "people",
         element: <People />,

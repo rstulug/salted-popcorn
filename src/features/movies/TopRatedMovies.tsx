@@ -18,7 +18,6 @@ function TopRatedMovies() {
   if (error || topRatedMovies.results.length < 1) return <EmptyPage />;
   return (
     <div className="flex flex-row">
-      <div className="w-[20%]"></div>
       <div className="flex flex-col flex-1">
         <GridContainer>
           {topRatedMovies.results.map((movie: MovieProp["movie"]) => (

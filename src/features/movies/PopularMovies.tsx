@@ -19,7 +19,6 @@ function PopularMovies() {
   if (error || popularMovies.results.length < 1) return <EmptyPage />;
   return (
     <div className="flex flex-row">
-      <div className="w-[20%]"></div>
       <div className="flex flex-col flex-1">
         <GridContainer>
           {popularMovies.results.map((movie: MovieProp["movie"]) => (
