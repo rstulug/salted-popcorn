@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 interface RangeProps {
   value: number | number[] | undefined;
   setValue: React.Dispatch<React.SetStateAction<number | number[]>>;
+
   min: number;
   max: number;
   range: boolean;
@@ -58,7 +59,7 @@ export default function RangeItem({
           </div>
         ) : (
           <div className="text-white absolute top-5 left-11 text-sm bg-gray-500 py-1 px-2 z-10 rounded-lg">
-            {showingName} to {value}
+            {showingName} up to {value}
           </div>
         )
       ) : (

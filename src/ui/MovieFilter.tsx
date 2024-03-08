@@ -21,11 +21,15 @@ export default function MovieFilter() {
   const [selectedUserScore, setSelectedUserScore] = useState<number | number[]>(
     [0, 100]
   );
+  const [selectedDuration, setSelectedDuration] = useState<number | number[]>(
+    400
+  );
 
-  // console.log(selectedUserScore);
+  console.log(selectedUserScore);
 
-  // console.log(selectedGenres);
-  // console.log(selectedSortBy);
+  console.log(selectedGenres);
+  console.log(selectedSortBy);
+  console.log(selectedDuration);
 
   return (
     <div className="md:flex flex-col gap-4 w-full  px-2 text-black mt-20 hidden">
@@ -61,6 +65,18 @@ export default function MovieFilter() {
           range={true}
           markNum={5}
           showingName="Score"
+        />
+      </div>
+      <div className="border-2 border-sky-200 py-3 rounded-xl px-2 relative">
+        <div className="text-white text-xl"> Duration</div>
+        <RangeItem
+          value={selectedDuration}
+          setValue={setSelectedDuration}
+          min={0}
+          max={400}
+          range={false}
+          markNum={5}
+          showingName="Duration"
         />
       </div>
     </div>
