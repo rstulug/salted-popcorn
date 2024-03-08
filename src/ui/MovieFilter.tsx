@@ -32,7 +32,10 @@ export default function MovieFilter() {
   console.log(selectedDuration);
 
   return (
-    <div className="md:flex flex-col gap-4 w-full  px-2 text-black mt-20 hidden">
+    <div className="md:flex flex-col gap-4 w-full  px-2 text-black mt-20 hidden border-2 border-sky-500 rounded-xl py-8">
+      <div className="w-full text-center text-2xl text-sky-100">
+        Discover Movies
+      </div>
       <div className="border-2 border-sky-200 py-3 rounded-xl px-2">
         <div className="text-white text-xl"> Sort by</div>
         <Select

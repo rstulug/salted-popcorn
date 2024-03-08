@@ -13,7 +13,7 @@ export default function TVShows() {
     [navigate, outlet]
   );
   return (
-    <div className="flex flex-row w-full">
+    <div className="flex flex-row w-full gap-4">
       <div className="w-[20%]">
         <MovieFilter />
       </div>
