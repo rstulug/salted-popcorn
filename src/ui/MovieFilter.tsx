@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { MOVIE_GENRES, SORT_OPTIONS } from "../utils/constant";
 import Select from "react-select";
+import "rc-slider/assets/index.css";
+import RangeItem from "./RangeItem";
 
 interface GenreProps {
   value: string | number | null;
@@ -16,9 +18,14 @@ export default function MovieFilter() {
 
   const [selectedGenres, setSelectedGenres] = useState<readonly GenreProps[]>();
   const [selectedSortBy, setSelectedSortBy] = useState<GenreProps | null>();
+  const [selectedUserScore, setSelectedUserScore] = useState<number | number[]>(
+    [0, 100]
+  );
 
-  console.log(selectedGenres);
-  console.log(selectedSortBy);
+  // console.log(selectedUserScore);
+
+  // console.log(selectedGenres);
+  // console.log(selectedSortBy);
 
   return (
     <div className="md:flex flex-col gap-4 w-full  px-2 text-black mt-20 hidden">
@@ -43,14 +50,17 @@ export default function MovieFilter() {
           }
         />
       </div>
-      <div className="border-2 border-sky-200 py-3 rounded-xl px-2">
-        <input
-          type="range"
-          max={10}
-          min={1}
-          name="rate"
-          className="w-full"
-          defaultValue={5}
+
+      <div className="border-2 border-sky-200 py-3 rounded-xl px-2 relative">
+        <div className="text-white text-xl"> User Score</div>
+        <RangeItem
+          value={selectedUserScore}
+          setValue={setSelectedUserScore}
+          min={0}
+          max={100}
+          range={true}
+          markNum={5}
+          showingName="Score"
         />
       </div>
     </div>
