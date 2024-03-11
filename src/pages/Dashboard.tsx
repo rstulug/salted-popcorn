@@ -22,9 +22,9 @@ function Dashboard() {
         <img
           src={IMAGE_URL + randomPoster}
           alt="random image poster"
-          className="w-full h-[32rem] rounded-b-2xl object-fill"
+          className="w-full h-[32rem] rounded-b-2xl object-fill mix-blend-plus-lighter"
         />
-        <div className="w-full h-[32rem] absolute top-0 left-0  z-10  opacity-[75%] rounded-b-2xl bg-blend-color-burn bg-gradient-to-b from-[#032541] to-[#000] "></div>
+        <div className="w-full h-[32rem] absolute top-0 left-0  z-10  opacity-[85%] rounded-b-2xl   bg-blue-800"></div>
         <div className="flex justify-center items-center h-full w-full text:sm md:text-3xl flex-col gap-4 mt-[2rem] font-bold  absolute top-0 text-white z-20">
           <div>All details about Movies, TV Shows and Actors</div>
           <div className="w-[80%] text-xl relative">
