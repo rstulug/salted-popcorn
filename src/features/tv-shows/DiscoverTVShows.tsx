@@ -1,10 +1,11 @@
 import { useSearchParams } from "react-router-dom";
 import GridContainer from "../../ui/GridContainer";
-import MovieItem, { MovieProp } from "../../ui/MovieItem";
+
 import Pagination from "../../ui/Pagination";
 import Spinner from "../../ui/Spinner";
 import { useDiscoverTVShows } from "./useDiscoverTvShows";
 import EmptyPage from "../../ui/EmptyPage";
+import TVShowItem, { TVShowProp } from "../../ui/TVShowItem";
 
 export default function DiscoverTVShows() {
   const { discoveredTVShows, isLoading, error } = useDiscoverTVShows();
@@ -21,8 +22,8 @@ export default function DiscoverTVShows() {
     <div className="flex flex-row">
       <div className="flex flex-col flex-1">
         <GridContainer>
-          {discoveredTVShows.results.map((movie: MovieProp["movie"]) => (
-            <MovieItem movie={movie} key={movie.id} />
+          {discoveredTVShows.results.map((tvshow: TVShowProp["tvshow"]) => (
+            <TVShowItem tvshow={tvshow} key={tvshow.id} />
           ))}
         </GridContainer>
 
