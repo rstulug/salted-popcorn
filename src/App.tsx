@@ -22,6 +22,8 @@ import SearchedTVShows from "./features/search/SearchedTVShows";
 import SearchedPeople from "./features/search/SearchedPeople";
 import Movies from "./pages/Movies";
 import TVShows from "./pages/TVShows";
+import DiscoverMovies from "./features/movies/DiscoverMovies";
+import DiscoverTVShows from "./features/tv-shows/DiscoverTVShows";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
             path: "top-rated",
             element: <TopRatedMovies />,
           },
+          {
+            path: "discover",
+            element: <DiscoverMovies />,
+          },
         ],
       },
       {
@@ -70,6 +76,10 @@ const router = createBrowserRouter([
           {
             path: "top-rated",
             element: <TopRatedTVShows />,
+          },
+          {
+            path: "discover",
+            element: <DiscoverTVShows />,
           },
         ],
       },

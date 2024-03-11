@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate, useOutlet } from "react-router-dom";
-import MovieFilter from "../ui/MovieFilter";
+
+import TVShowFilter from "../ui/TVShowFilter";
 
 export default function TVShows() {
   const outlet = useOutlet();
@@ -15,7 +16,7 @@ export default function TVShows() {
   return (
     <div className="flex flex-row w-full gap-4">
       <div className="w-[20%]">
-        <MovieFilter />
+        <TVShowFilter />
       </div>
       <div className="flex flex-1 flex-col">
         <Outlet />

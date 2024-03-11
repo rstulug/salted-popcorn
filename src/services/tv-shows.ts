@@ -100,3 +100,20 @@ export async function getSearchTVShows(
 
   return data;
 }
+
+export async function getDiscoverTVShows(
+  query: string | null,
+  curPage: number
+) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US${query}&page=${curPage}`,
+    options
+  );
+
+  if (!res.ok)
+    throw new Error("An error occured during fetching filtered movies");
+
+  const data = await res.json();
+
+  return data;
+}

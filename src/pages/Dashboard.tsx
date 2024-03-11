@@ -9,6 +9,7 @@ import SearchBar from "../ui/SearchBar";
 function Dashboard() {
   const { trendMovies, isLoading: isLoadingMovies } = useTrendMovies();
   const { trendTVShows, isLoading: isLoadingTVShows } = useTrendTVShows();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setShowSearch] = useState<boolean>(true);
 
   if (isLoadingMovies || isLoadingTVShows) return <Spinner />;
@@ -21,10 +22,9 @@ function Dashboard() {
         <img
           src={IMAGE_URL + randomPoster}
           alt="random image poster"
-          // className="w-full h-[32rem] rounded-b-2xl object-fill object-top saturate-[300%] hue-rotate-[20deg] brightness-[70%] opacity-80 "
           className="w-full h-[32rem] rounded-b-2xl object-fill"
         />
-        <div className="w-full h-[32rem] absolute top-0 left-0  z-10  opacity-[85%] rounded-b-2xl bg-blend-color-burn bg-gradient-to-b from-[#032541] to-[#000]"></div>
+        <div className="w-full h-[32rem] absolute top-0 left-0  z-10  opacity-[75%] rounded-b-2xl bg-blend-color-burn bg-gradient-to-b from-[#032541] to-[#000] "></div>
         <div className="flex justify-center items-center h-full w-full text:sm md:text-3xl flex-col gap-4 mt-[2rem] font-bold  absolute top-0 text-white z-20">
           <div>All details about Movies, TV Shows and Actors</div>
           <div className="w-[80%] text-xl relative">
@@ -35,7 +35,7 @@ function Dashboard() {
             <a
               href="https://www.themoviedb.org/"
               target="_blank"
-              className="underline text-md text-blue-600"
+              className="underline text-md text-sky-300"
             >
               The Movie Database
             </a>

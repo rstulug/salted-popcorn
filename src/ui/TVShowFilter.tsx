@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MOVIE_GENRES, SORT_OPTIONS } from "../utils/constant";
+import { TVSHOV_GENRES, SORT_OPTIONS } from "../utils/constant";
 import Select from "react-select";
 import "rc-slider/assets/index.css";
 import RangeItem from "./RangeItem";
@@ -11,12 +11,11 @@ interface GenreProps {
   label: string;
 }
 
-export default function MovieFilter() {
+export default function TVShowFilter() {
   const navigate = useNavigate();
-  const genreOptions = MOVIE_GENRES.genres.map((genre) => {
+  const genreOptions = TVSHOV_GENRES.genres.map((genre) => {
     return { value: genre.id, label: genre.name };
   });
-
   const sortOptions = SORT_OPTIONS.options;
 
   const [selectedGenres, setSelectedGenres] = useState<readonly GenreProps[]>();
@@ -58,7 +57,8 @@ export default function MovieFilter() {
     } else {
       searchParams.delete("with_runtime.lte");
     }
-    navigate("/movies/discover");
+
+    navigate("/tv-shows/discover");
     searchParams.set("page", "1");
     setSearchParams(searchParams);
   }

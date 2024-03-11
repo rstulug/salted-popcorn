@@ -13,7 +13,7 @@ const styles = {
     "text-gray-900 bg-white border border-gray-300  hover:bg-gray-100  rounded-md  dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 ",
 
   green:
-    " bg-green-600 hover:bg-green-500   rounded-md  dark:bg-green-700 dark:hover:bg-green-600",
+    " bg-green-600 hover:bg-green-500   rounded-md  dark:bg-green-700 dark:hover:bg-green-600 font-semibold text-sky-200",
 
   red: " bg-red-700 hover:bg-red-800   rounded-md  dark:bg-red-800 dark:hover:bg-red-600 ",
   yellow:
