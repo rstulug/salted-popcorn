@@ -78,7 +78,7 @@ function Header() {
       <div className="sm:justify-end flex w-4/12 justify-center items-center">
         {showSearch && (
           <div className="w-full relative">
-            <SearchBar setShowSearch={setShowSearch} />
+            <SearchBar setShowSearch={setShowSearch} height="2rem" />
           </div>
         )}
 

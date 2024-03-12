@@ -4,8 +4,10 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function SearchBar({
   setShowSearch,
+  height,
 }: {
   setShowSearch: React.Dispatch<React.SetStateAction<boolean>>;
+  height: string;
 }) {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,7 +26,8 @@ export default function SearchBar({
       <input
         type="text"
         placeholder="Search for movie, tv show or person"
-        className="rounded-lg bg-gray-200 outline-none text-black placeholder:pl-6 pl-4 w-full placeholder:text-gray-500 transition-all"
+        className="rounded-xl bg-gray-200 outline-none text-black placeholder:pl-6 pl-4 w-full placeholder:text-gray-500 transition-all "
+        style={{ height: `${height}` }}
         onChange={(e) => {
           setSearchQuery(e.target.value);
         }}
