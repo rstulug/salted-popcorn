@@ -17,7 +17,7 @@ export default function SliderItem({ data, type }: ChildrenProp) {
     slidesToScroll: data.length > 6 ? 1 : 0,
     arrows: data.length < 6 ? false : true,
     className: "index.css",
-
+    swipeToSlide: true,
     responsive: [
       {
         breakpoint: 1025,
@@ -28,6 +28,7 @@ export default function SliderItem({ data, type }: ChildrenProp) {
 
           infinite: data.length < 2 ? false : true,
           dots: false,
+          swipeToSlide: true,
         },
       },
       {
@@ -38,6 +39,7 @@ export default function SliderItem({ data, type }: ChildrenProp) {
           arrows: data.length < 2 ? false : true,
           infinite: data.length < 2 ? false : true,
           dots: false,
+          swipeToSlide: true,
         },
       },
 
