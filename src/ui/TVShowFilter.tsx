@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TVSHOV_GENRES, SORT_OPTIONS } from "../utils/constant";
+import { TVSHOV_GENRES, SORT_OPTIONS_TV } from "../utils/constant";
 import Select from "react-select";
 import "rc-slider/assets/index.css";
 import RangeItem from "./RangeItem";
@@ -16,7 +16,7 @@ export default function TVShowFilter() {
   const genreOptions = TVSHOV_GENRES.genres.map((genre) => {
     return { value: genre.id, label: genre.name };
   });
-  const sortOptions = SORT_OPTIONS.options;
+  const sortOptions = SORT_OPTIONS_TV.options;
 
   const [selectedGenres, setSelectedGenres] = useState<readonly GenreProps[]>();
   const [selectedSortBy, setSelectedSortBy] = useState<GenreProps | null>();
@@ -26,6 +26,8 @@ export default function TVShowFilter() {
   const [selectedDuration, setSelectedDuration] = useState<number | number[]>(
     400
   );
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -56,6 +58,18 @@ export default function TVShowFilter() {
       searchParams.set("with_runtime.lte", `${selectedDuration}`);
     } else {
       searchParams.delete("with_runtime.lte");
+    }
+
+    if (fromDate) {
+      searchParams.set("first_air_date.gte", `${fromDate}`);
+    } else {
+      searchParams.delete("first_air_date.gte");
+    }
+
+    if (toDate) {
+      searchParams.set("first_air_date.lte", `${toDate}`);
+    } else {
+      searchParams.delete("first_air_date.lte");
     }
 
     navigate("/tv-shows/discover");
@@ -112,6 +126,28 @@ export default function TVShowFilter() {
           range={false}
           markNum={5}
           showingName="Duration (minutes)"
+        />
+      </div>
+
+      <div className="border-2 border-sky-200 py-3 rounded-xl px-2 relative flex flex-col gap-2">
+        <div className="text-white text-xl">Release Date</div>
+        <label className="text-white">From:</label>
+        <input
+          type="date"
+          name="from_date"
+          className="w-full rounded-xl pl-3 py-1 pr-1"
+          data-date-format="YYYY MMMM DD"
+          value={fromDate}
+          onChange={(e) => setFromDate(e.target.value)}
+        />
+        <label className="text-white">To:</label>
+        <input
+          type="date"
+          name="from_date"
+          className="w-full rounded-xl pl-3 py-1 pr-1"
+          value={toDate}
+          onChange={(e) => setToDate(e.target.value)}
+          min={fromDate}
         />
       </div>
 

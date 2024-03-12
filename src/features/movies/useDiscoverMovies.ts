@@ -8,7 +8,6 @@ export function useDiscoverMovies() {
   let query = "";
 
   for (const entry of searchParams.entries()) {
-    console.log(entry);
     if (entry[0] !== "page") query += `&${entry[0]}=${entry[1]}`;
   }
 

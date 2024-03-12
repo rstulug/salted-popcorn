@@ -27,6 +27,8 @@ export default function MovieFilter() {
   const [selectedDuration, setSelectedDuration] = useState<number | number[]>(
     400
   );
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -58,6 +60,19 @@ export default function MovieFilter() {
     } else {
       searchParams.delete("with_runtime.lte");
     }
+
+    if (fromDate) {
+      searchParams.set("primary_release_date.gte", `${fromDate}`);
+    } else {
+      searchParams.delete("primary_release_date.gte");
+    }
+
+    if (toDate) {
+      searchParams.set("primary_release_date.lte", `${toDate}`);
+    } else {
+      searchParams.delete("primary_release_date.lte");
+    }
+
     navigate("/movies/discover");
     searchParams.set("page", "1");
     setSearchParams(searchParams);
@@ -112,6 +127,28 @@ export default function MovieFilter() {
           range={false}
           markNum={5}
           showingName="Duration (minutes)"
+        />
+      </div>
+
+      <div className="border-2 border-sky-200 py-3 rounded-xl px-2 relative flex flex-col gap-2">
+        <div className="text-white text-xl">Release Date</div>
+        <label className="text-white">From:</label>
+        <input
+          type="date"
+          name="from_date"
+          className="w-full rounded-xl pl-3 py-1 pr-1"
+          data-date-format="YYYY MMMM DD"
+          value={fromDate}
+          onChange={(e) => setFromDate(e.target.value)}
+        />
+        <label className="text-white">To:</label>
+        <input
+          type="date"
+          name="from_date"
+          className="w-full rounded-xl pl-3 py-1 pr-1"
+          value={toDate}
+          onChange={(e) => setToDate(e.target.value)}
+          min={fromDate}
         />
       </div>
 

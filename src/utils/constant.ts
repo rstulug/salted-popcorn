@@ -162,3 +162,17 @@ export const SORT_OPTIONS = {
     { value: "primary_release_date.desc", label: "Release Date (desc)" },
   ],
 };
+
+export const SORT_OPTIONS_TV = {
+  options: [
+    { value: null, label: "Select..." },
+    { value: "vote_average.desc", label: "Vote Average (desc)" },
+    { value: "vote_average.asc", label: "Vote Average (asc)" },
+    { value: "popularity.asc", label: "Popularity (asc)" },
+    { value: "popularity.desc", label: "Popularity (desc)" },
+    { value: "title.asc", label: "Title (asc)" },
+    { value: "title.desc", label: "Title (desc)" },
+    { value: "first_air_date.asc", label: "First Air  Date (asc)" },
+    { value: "first_air_date.desc", label: "First Air Date (desc)" },
+  ],
+};
