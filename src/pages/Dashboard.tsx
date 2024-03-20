@@ -25,10 +25,10 @@ function Dashboard() {
           className="w-full h-[32rem] rounded-b-2xl object-cover object-top"
         />
         <div className="w-full h-[32rem] absolute top-0 left-0  z-20  bg-black bg-opacity-50 rounded-b-2xl"></div>
-        <div className="flex justify-center items-center h-full w-full text:sm md:text-3xl flex-col gap-4 mt-[2rem] font-bold  absolute top-0 text-white z-20">
+        <div className="flex justify-center items-center h-full w-full text:sm md:text-2xl flex-col gap-4 mt-[10rem] font-bold  absolute top-0 text-white z-20">
           <div>All details about Movies, TV Shows and Actors</div>
           <div className="w-[80%] text-xl relative">
-            <SearchBar setShowSearch={setShowSearch} height="3rem" />
+            <SearchBar setShowSearch={setShowSearch} height="2.4rem" />
           </div>
           <div>All information that shown to you provided py</div>
           <div>
