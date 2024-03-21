@@ -22,7 +22,8 @@ function Dashboard() {
         <img
           src={IMAGE_URL + randomPoster}
           alt="random image poster"
-          className="w-full h-[32rem] rounded-b-2xl object-cover object-top"
+          className="w-full h-[32rem] rounded-b-2xl object-cover object-top "
+          style={{ transform: "translate3d(0,0,1px)" }}
         />
         <div className="w-full h-[32rem] absolute top-0 left-0  z-20  bg-black bg-opacity-50 rounded-b-2xl"></div>
         <div className="flex justify-center items-center h-full w-full text:sm md:text-2xl flex-col gap-4 mt-[10rem] font-bold  absolute top-0 text-white z-20">
@@ -47,7 +48,7 @@ function Dashboard() {
           <Spinner />
         ) : (
           <div className="mt-4 w-full ">
-            <span className="text-xl text-sky-200 font-semibold">
+            <span className="text-xl tedxt-sky-200 font-semibold">
               Trending Movies
             </span>
             <SliderItem data={trendMovies.results} type="movie" />
